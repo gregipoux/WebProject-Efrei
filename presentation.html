@@ -9,13 +9,21 @@
 </head>
 <body>
   <!-- ========== HEADER ========== -->
-  <header>
+  <header class="site-header">
     <div class="logo-titre">
-      <img src="assets/img/logo-efrei.png" alt="Logo de l'EFREI" id="logo-efrei">
+      <a href="index.html" class="logo-link">
+        <img src="assets/img/logo-efrei.png" alt="Logo de l'EFREI" id="logo-efrei">
+      </a>
       <h1>Département d'informatique – EFREI</h1>
     </div>
 
-    <nav aria-label="Navigation principale">
+    <button class="nav-toggle" aria-label="Ouvrir le menu de navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="main-nav" aria-label="Navigation principale">
       <ul>
         <li><a href="index.html">Accueil</a></li>
         <li><a href="presentation.html">Présentation générale</a></li>

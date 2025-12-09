@@ -1,0 +1,489 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "bonjour",
+        "salut",
+        "bonsoir",
+        "hello",
+        "hey",
+        "bonjour à tous",
+        "bonjour monsieur",
+        "bonjour madame"
+      ],
+      "responses": [
+        "Bonjour ! Je suis là pour vous aider concernant le département d'informatique de l'EFREI. Comment puis-je vous assister aujourd'hui ?",
+        "Salut ! Bienvenue sur le site du département d'informatique. Que souhaitez-vous savoir ?",
+        "Bonjour ! Je peux répondre à vos questions sur nos formations, l'équipe enseignante, les admissions et bien plus encore. Que voulez-vous savoir ?"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "au revoir",
+        "à bientôt",
+        "bye",
+        "à plus",
+        "merci au revoir",
+        "bonne journée",
+        "bonne soirée"
+      ],
+      "responses": [
+        "Au revoir ! N'hésitez pas à revenir si vous avez d'autres questions. Bonne journée !",
+        "À bientôt ! Si vous avez besoin d'informations supplémentaires, je serai là pour vous aider.",
+        "Bonne journée ! N'hésitez pas à nous contacter pour toute question sur nos formations."
+      ]
+    },
+    {
+      "tag": "presentation_efrei",
+      "patterns": [
+        "qu'est-ce que l'efrei",
+        "présentation efrei",
+        "histoire efrei",
+        "depuis quand existe efrei",
+        "combien d'années efrei"
+      ],
+      "responses": [
+        "L'EFREI Paris est une école d'ingénieurs historique spécialisée dans le numérique, fondée en 1936. Elle forme des ingénieurs et experts du numérique depuis près de 90 ans. Le département d'informatique s'inscrit pleinement dans cette histoire d'excellence.",
+        "L'EFREI Paris existe depuis 1936, soit près de 90 ans d'expertise dans la formation d'ingénieurs du numérique. L'école a accompagné toutes les grandes mutations technologiques, de l'informatique de gestion aux systèmes distribués, puis à l'ère du cloud, de la data et de l'intelligence artificielle."
+      ]
+    },
+    {
+      "tag": "presentation_departement",
+      "patterns": [
+        "qu'est-ce que le département",
+        "présentation département",
+        "département informatique",
+        "mission département",
+        "vision département"
+      ],
+      "responses": [
+        "Le département d'informatique de l'EFREI Paris forme des ingénieurs et experts du numérique capables d'intervenir à toutes les étapes d'un projet informatique : conception, développement, déploiement, sécurisation et exploitation des systèmes d'information. Il est implanté sur le campus de Villejuif.",
+        "Notre mission est de former des ingénieurs responsables, opérationnels et curieux, capables de maîtriser les fondamentaux de l'informatique, concevoir des solutions logicielles fiables, travailler en équipe dans un environnement agile et international, et anticiper les évolutions technologiques.",
+        "Notre vision est d'être un acteur de référence dans la formation d'ingénieurs du numérique, en plaçant l'innovation pédagogique, la proximité avec les entreprises et l'ouverture internationale au cœur de notre stratégie."
+      ]
+    },
+    {
+      "tag": "chiffres_cles",
+      "patterns": [
+        "chiffres clés",
+        "statistiques efrei",
+        "combien d'étudiants",
+        "nombre d'étudiants",
+        "taux d'insertion",
+        "nombre de diplômés"
+      ],
+      "responses": [
+        "Voici les chiffres clés du département et de l'école : environ 4 600 étudiants sur les campus de Villejuif et Bordeaux, plus de 16 000 diplômés dans le réseau alumni de l'EFREI Paris, 100% de taux d'insertion professionnelle après le cycle ingénieur, et près de 90 ans d'expertise dans la formation d'ingénieurs du numérique.",
+        "Le département compte environ 4 600 étudiants sur les campus de Villejuif et Bordeaux. L'EFREI Paris a formé plus de 16 000 diplômés et affiche un taux d'insertion professionnelle de 100% après le cycle ingénieur."
+      ]
+    },
+    {
+      "tag": "formations_bachelor",
+      "patterns": [
+        "bachelor",
+        "bachelors",
+        "quels bachelors",
+        "formation bachelor",
+        "bachelor informatique",
+        "bachelor cybersécurité",
+        "bachelor développement web"
+      ],
+      "responses": [
+        "Le département propose trois bachelors : le Bachelor Informatique (formation généraliste en 3 ans), le Bachelor Cybersécurité & Réseaux (orienté sécurité des systèmes), et le Bachelor Développement Web & IA (centré sur le web et l'initiation à la data science).",
+        "Nous proposons trois bachelors : 1) Bachelor Informatique - Grade de Licence (formation généraliste), 2) Bachelor Cybersécurité & Réseaux (sécurité des systèmes d'information), et 3) Bachelor Développement Web & IA (applications web/mobiles et initiation IA)."
+      ]
+    },
+    {
+      "tag": "bachelor_informatique",
+      "patterns": [
+        "bachelor informatique détail",
+        "bachelor informatique programme",
+        "bachelor informatique débouchés",
+        "bachelor informatique contenu"
+      ],
+      "responses": [
+        "Le Bachelor Informatique propose une formation généraliste en informatique sur 3 ans, centrée sur les fondamentaux : programmation (Java, Python, Web), algorithmique, bases de données SQL, réseaux et systèmes, génie logiciel, modélisation UML. Débouchés : développeur applicatif, développeur web, assistant ingénieur systèmes et réseaux, technicien informatique, ou poursuite en cycle ingénieur.",
+        "Le Bachelor Informatique dure 3 ans et couvre la programmation, l'algorithmique, les bases de données, les réseaux et systèmes. Il se termine par un stage en entreprise. Les diplômés peuvent devenir développeurs, techniciens informatiques ou poursuivre en cycle ingénieur."
+      ]
+    },
+    {
+      "tag": "bachelor_cybersecurite",
+      "patterns": [
+        "bachelor cybersécurité détail",
+        "bachelor cybersécurité programme",
+        "bachelor cybersécurité contenu",
+        "formation cybersécurité bachelor"
+      ],
+      "responses": [
+        "Le Bachelor Cybersécurité & Réseaux est orienté vers la sécurité des systèmes d'information et des infrastructures réseaux. Programme : réseaux avancés, systèmes et virtualisation, sécurité des systèmes, cryptographie, tests d'intrusion (initiation), administration Linux/Windows, supervision et monitoring. Débouchés : technicien sécurité, administrateur systèmes et réseaux junior, analyste SOC junior, ou poursuite en cycle ingénieur cybersécurité.",
+        "Le Bachelor Cybersécurité & Réseaux prépare aux métiers de la protection des données et des systèmes. Il couvre les réseaux, la sécurité, la cryptographie et l'administration. Il est disponible en formation initiale ou alternance selon les années."
+      ]
+    },
+    {
+      "tag": "bachelor_web_ia",
+      "patterns": [
+        "bachelor développement web",
+        "bachelor web ia",
+        "bachelor web et ia",
+        "formation web et ia"
+      ],
+      "responses": [
+        "Le Bachelor Développement Web & IA est centré sur le développement d'applications web et mobiles et sur l'initiation à la data science et au machine learning. Programme : développement front-end (HTML, CSS, JavaScript), développement back-end, APIs REST, bases de données, UX/UI, introduction au machine learning, data visualisation. Débouchés : développeur web, développeur full stack junior, développeur mobile, data analyst junior, ou poursuite en cycle ingénieur.",
+        "Le Bachelor Développement Web & IA forme aux technologies web modernes et à l'initiation à l'IA. Il couvre le développement front-end et back-end, les bases de données, l'UX/UI et les bases du machine learning."
+      ]
+    },
+    {
+      "tag": "cycle_ingenieur",
+      "patterns": [
+        "cycle ingénieur",
+        "formation ingénieur",
+        "majeures",
+        "filières ingénieur",
+        "spécialisations ingénieur"
+      ],
+      "responses": [
+        "Le cycle ingénieur propose 4 majeures : IT (Information Technology) pour le développement logiciel, Data Science & Intelligence Artificielle pour la data et le machine learning, Cybersécurité pour la protection des systèmes, et Cloud & DevOps pour les infrastructures cloud et l'automatisation.",
+        "Le cycle ingénieur offre 4 spécialisations : Majeure IT (développement et architectures logicielles), Majeure Data Science & IA (data et machine learning), Majeure Cybersécurité (sécurité des systèmes), et Majeure Cloud & DevOps (infrastructures cloud et CI/CD)."
+      ]
+    },
+    {
+      "tag": "majeure_it",
+      "patterns": [
+        "majeure it",
+        "information technology",
+        "développement logiciel",
+        "majeure développement"
+      ],
+      "responses": [
+        "La Majeure IT forme des ingénieurs capables de concevoir, développer et maintenir des systèmes d'information complexes. Compétences clés : génie logiciel, architectures distribuées, développement full stack, intégration continue, qualité logicielle, gestion de projet agile. Exemples de projets : application web d'entreprise, plateforme de services, API et microservices, intégration de solutions cloud.",
+        "La Majeure IT couvre le génie logiciel, les architectures distribuées, le développement full stack et les méthodologies agiles. Les étudiants travaillent sur des projets concrets comme des applications web d'entreprise ou des plateformes de services."
+      ]
+    },
+    {
+      "tag": "majeure_data",
+      "patterns": [
+        "majeure data",
+        "data science",
+        "intelligence artificielle",
+        "machine learning",
+        "majeure ia"
+      ],
+      "responses": [
+        "La Majeure Data Science & Intelligence Artificielle prépare aux métiers de la data : collecte, traitement, analyse et valorisation de données massives, avec une forte composante machine learning. Compétences clés : statistiques, apprentissage supervisé et non supervisé, deep learning, big data, data engineering, visualisation de données, éthique de l'IA. Exemples de projets : moteur de recommandation, classification d'images ou de textes, analyse prédictive, tableau de bord décisionnel.",
+        "La Majeure Data Science & IA forme aux métiers de la data science et du machine learning. Elle couvre les statistiques, le deep learning, le big data et la visualisation de données. Les étudiants réalisent des projets comme des moteurs de recommandation ou des analyses prédictives."
+      ]
+    },
+    {
+      "tag": "majeure_cybersecurite",
+      "patterns": [
+        "majeure cybersécurité",
+        "spécialisation cybersécurité",
+        "formation cybersécurité ingénieur"
+      ],
+      "responses": [
+        "La Majeure Cybersécurité forme des spécialistes de la protection des systèmes d'information, capables d'anticiper, détecter et répondre aux attaques. Compétences clés : sécurité des systèmes et réseaux, audit et tests d'intrusion, sécurité applicative, gestion des identités, cryptographie avancée, gestion de crise cyber. Exemples de projets : mise en place d'une architecture sécurisée, audit d'application web, mise en œuvre d'un SIEM, simulation de scénario de cyberattaque.",
+        "La Majeure Cybersécurité prépare aux métiers de la sécurité informatique. Elle couvre l'audit, les tests d'intrusion, la cryptographie et la gestion de crise cyber. Les étudiants travaillent sur des projets comme la mise en place d'architectures sécurisées ou des audits d'applications."
+      ]
+    },
+    {
+      "tag": "majeure_cloud_devops",
+      "patterns": [
+        "majeure cloud",
+        "majeure devops",
+        "cloud et devops",
+        "formation cloud"
+      ],
+      "responses": [
+        "La Majeure Cloud & DevOps se concentre sur les infrastructures cloud, l'automatisation et les pratiques DevOps pour industrialiser le cycle de vie des applications. Compétences clés : virtualisation, conteneurisation (Docker), orchestration (Kubernetes), plateformes cloud (AWS/Azure/GCP), pipelines CI/CD, supervision et haute disponibilité. Exemples de projets : déploiement d'une application cloud-native, mise en place d'un pipeline DevOps complet, migration d'une application vers le cloud.",
+        "La Majeure Cloud & DevOps forme aux technologies cloud et à l'automatisation. Elle couvre Docker, Kubernetes, les plateformes cloud (AWS, Azure, GCP) et les pipelines CI/CD. Les étudiants réalisent des projets de déploiement cloud et de migration."
+      ]
+    },
+    {
+      "tag": "programme_detaille",
+      "patterns": [
+        "programme détaillé",
+        "planning formation",
+        "semestres",
+        "modules enseignés",
+        "crédits ects"
+      ],
+      "responses": [
+        "Le programme s'étend sur 6 semestres (L3 à M2). L3 S5 : Programmation avancée, bases de données, réseaux, systèmes d'exploitation, projet de développement (30 ECTS). L3 S6 : Génie logiciel, développement web, algorithmique avancée, introduction cybersécurité, projet tutoré (30 ECTS). M1 S7 : Spécialisation majeure, architectures logicielles, gestion de projet, méthodologies agiles (30 ECTS). M1 S8 : Approfondissement majeure, projet long, sécurité avancée, innovation, stage ou projet d'application (30 ECTS). M2 S9 : Modules avancés de majeure, séminaires techniques, veille technologique (30 ECTS). M2 S10 : Projet de fin d'études et stage long en entreprise, mémoire et soutenance (30 ECTS).",
+        "Le cursus comprend 6 semestres avec 30 crédits ECTS chacun. Les deux premières années (L3) couvrent les fondamentaux, puis les étudiants se spécialisent dans une majeure en M1 et M2, avec des projets et stages en entreprise."
+      ]
+    },
+    {
+      "tag": "debouches_metiers",
+      "patterns": [
+        "débouchés",
+        "métiers",
+        "quels métiers",
+        "emplois possibles",
+        "carrières"
+      ],
+      "responses": [
+        "Les diplômés accèdent à de nombreux métiers : développeur Full Stack, Backend, Frontend, Mobile, ingénieur DevOps, Cloud, Data Scientist, Data Engineer, Data Analyst, ingénieur Cybersécurité, analyste SOC, architecte Logiciel/Système, chef de Projet IT, Scrum Master, Product Owner, consultant en Systèmes d'Information ou Transformation Digitale, ingénieur IA, Machine Learning, Blockchain, IoT.",
+        "Les débouchés sont très variés dans le secteur du numérique : développement (web, mobile, full stack), data (scientist, engineer, analyst), cybersécurité, cloud/DevOps, architecture, gestion de projet, conseil, et technologies émergentes (IA, blockchain, IoT)."
+      ]
+    },
+    {
+      "tag": "admissions",
+      "patterns": [
+        "admission",
+        "admissions",
+        "comment s'inscrire",
+        "conditions admission",
+        "procédure admission",
+        "inscription"
+      ],
+      "responses": [
+        "Plusieurs voies d'accès sont possibles : Admission post-bac (concours d'entrée pour les bacheliers), Admission en cycle ingénieur (sur dossier et entretien pour niveau L3 ou équivalent), Admission en alternance (possible à partir de la 3ème année), Admission internationale (procédure spécifique pour étudiants étrangers). Pour plus d'informations, contactez le service des admissions de l'EFREI.",
+        "Les admissions se font par plusieurs voies : post-bac (concours), cycle ingénieur (dossier + entretien pour niveau L3), alternance (à partir de la 3ème année), ou admission internationale. Contactez le service des admissions pour connaître les dates de concours et les dossiers à fournir."
+      ]
+    },
+    {
+      "tag": "alternance",
+      "patterns": [
+        "alternance",
+        "formation alternance",
+        "apprentissage",
+        "possible alternance",
+        "alternance possible"
+      ],
+      "responses": [
+        "Oui, l'alternance est possible à partir de la 3ème année. Elle permet d'acquérir une expérience professionnelle tout en poursuivant ses études. Le Bachelor Cybersécurité & Réseaux propose également l'alternance selon les années.",
+        "L'alternance est disponible à partir de la 3ème année. C'est une excellente opportunité pour combiner formation académique et expérience professionnelle en entreprise."
+      ]
+    },
+    {
+      "tag": "stages",
+      "patterns": [
+        "stages",
+        "stage",
+        "stages obligatoires",
+        "durée stages",
+        "quand stages"
+      ],
+      "responses": [
+        "Plusieurs stages sont intégrés au cursus : un stage de découverte en 1ère année, un stage technique en 2ème année, et un stage de fin d'études en dernière année. Le stage de fin d'études s'accompagne d'un projet de fin d'études avec mémoire et soutenance.",
+        "Le cursus comprend plusieurs stages : stage de découverte (1ère année), stage technique (2ème année), et stage de fin d'études (dernière année) avec projet de fin d'études, mémoire et soutenance devant un jury."
+      ]
+    },
+    {
+      "tag": "equipe_enseignante",
+      "patterns": [
+        "équipe enseignante",
+        "enseignants",
+        "professeurs",
+        "intervenants",
+        "qui sont les enseignants"
+      ],
+      "responses": [
+        "Le département bénéficie d'une équipe pédagogique composée d'enseignants-chercheurs permanents et d'intervenants professionnels reconnus dans leur domaine. Cette diversité garantit une formation à la fois académique et ancrée dans la réalité du terrain. Les enseignants sont disponibles lors de leurs permanences ou sur rendez-vous.",
+        "L'équipe enseignante comprend des enseignants-chercheurs permanents et des intervenants professionnels. Les enseignants sont spécialisés dans différents domaines : Intelligence Artificielle, Cybersécurité, Cloud Computing, Data Science, Développement Logiciel. Ils sont disponibles lors de leurs permanences."
+      ]
+    },
+    {
+      "tag": "permanences",
+      "patterns": [
+        "permanences",
+        "permanence",
+        "horaires permanences",
+        "quand permanences",
+        "disponibilité enseignants"
+      ],
+      "responses": [
+        "Les enseignants sont disponibles lors de leurs permanences : Lundi de 14h à 16h, Mardi de 10h à 12h, Mercredi de 14h à 16h, Jeudi de 10h à 12h, Vendredi sur rendez-vous uniquement. Vous pouvez également consulter le tableau des permanences sur la page Équipe enseignante pour connaître les horaires spécifiques de chaque enseignant.",
+        "Les permanences ont lieu : Lundi 14h-16h, Mardi 10h-12h, Mercredi 14h-16h, Jeudi 10h-12h, et Vendredi sur rendez-vous. Consultez la page Équipe enseignante pour les horaires détaillés de chaque enseignant."
+      ]
+    },
+    {
+      "tag": "recherche",
+      "patterns": [
+        "recherche",
+        "domaines recherche",
+        "activités recherche",
+        "chercheurs"
+      ],
+      "responses": [
+        "Le département mène des activités de recherche dans plusieurs domaines : Intelligence Artificielle et Machine Learning, Cloud Computing et Virtualisation, Cybersécurité et Cryptographie, Big Data et Data Analytics, Internet des Objets (IoT), Blockchain et Technologies Distribuées, Ingénierie Logicielle et Architecture Système. Les enseignants-chercheurs publient régulièrement dans des revues et conférences internationales.",
+        "Les domaines de recherche incluent : IA et Machine Learning, Cloud Computing, Cybersécurité, Big Data, IoT, Blockchain, et Ingénierie Logicielle. Les enseignants-chercheurs participent à des projets collaboratifs avec des partenaires académiques et industriels."
+      ]
+    },
+    {
+      "tag": "competences",
+      "patterns": [
+        "compétences",
+        "quelles compétences",
+        "compétences acquises",
+        "savoirs faire"
+      ],
+      "responses": [
+        "Compétences techniques : Programmation (Java, Python, JavaScript, C++), développement web, bases de données (SQL, NoSQL), architecture logicielle, gestion de projet et méthodologies agiles, DevOps et CI/CD, cloud computing, cybersécurité, Intelligence Artificielle et Machine Learning, Big Data. Compétences transversales : Communication et travail en équipe, gestion de projet, résolution de problèmes complexes, adaptabilité et veille technologique, leadership, anglais technique, innovation et créativité.",
+        "Les étudiants développent des compétences techniques (programmation, bases de données, cloud, cybersécurité, IA) et transversales (communication, gestion de projet, travail en équipe, innovation)."
+      ]
+    },
+    {
+      "tag": "pedagogie",
+      "patterns": [
+        "pédagogie",
+        "approche pédagogique",
+        "méthode enseignement",
+        "comment on enseigne"
+      ],
+      "responses": [
+        "Notre pédagogie repose sur un équilibre entre bases théoriques solides et mises en pratique régulières. Les étudiants alternent cours magistraux, travaux dirigés, travaux pratiques en laboratoire, projets en groupe et périodes en entreprise. Éléments clés : apprentissage par projets, professionnalisation (interventions de professionnels, conférences, workshops, hackathons), ouverture internationale (semestres d'échange, doubles diplômes, stages à l'étranger), et accompagnement personnalisé.",
+        "L'approche pédagogique combine théorie et pratique : cours, TD, TP en laboratoire, projets en groupe, stages. Elle privilégie l'apprentissage par projets, la professionnalisation, l'ouverture internationale et l'accompagnement personnalisé."
+      ]
+    },
+    {
+      "tag": "valeurs",
+      "patterns": [
+        "valeurs",
+        "quelles valeurs",
+        "principes",
+        "éthique"
+      ],
+      "responses": [
+        "Nos valeurs sont : Excellence académique (exigence scientifique et technique, qualité des enseignements), Innovation (expérimentation, création de solutions nouvelles), Responsabilité (prise en compte des enjeux éthiques, sociaux et environnementaux), Esprit d'équipe (coopération, bienveillance, travail en mode projet), Ouverture (diversité des profils, internationalisation, dialogue avec les entreprises).",
+        "Les valeurs du département sont : excellence académique, innovation, responsabilité, esprit d'équipe et ouverture. Nous formons des ingénieurs responsables et capables d'anticiper les évolutions technologiques."
+      ]
+    },
+    {
+      "tag": "campus",
+      "patterns": [
+        "campus",
+        "où se trouve",
+        "localisation",
+        "villejuif",
+        "adresse"
+      ],
+      "responses": [
+        "Le département d'informatique est implanté sur le campus de Villejuif. L'EFREI Paris dispose également d'un campus à Bordeaux. Le campus de Villejuif bénéficie de laboratoires informatiques modernes, des plateformes pédagogiques en ligne et de nombreux partenariats entreprises.",
+        "Le département est situé sur le campus de Villejuif, qui dispose de laboratoires informatiques modernes et d'espaces de vie étudiante. L'EFREI a également un campus à Bordeaux."
+      ]
+    },
+    {
+      "tag": "vie_etudiante",
+      "patterns": [
+        "vie étudiante",
+        "clubs",
+        "associations",
+        "bde",
+        "activités étudiantes"
+      ],
+      "responses": [
+        "Le département encourage la vie associative avec plusieurs clubs : Club Développement (hackathons, projets collaboratifs), Club Cybersécurité (CTF, formations), Club Data Science (projets machine learning, compétitions Kaggle), Club Innovation (projets IoT, blockchain, technologies émergentes), et le Bureau des Étudiants (BDE) qui organise événements, soirées et intégration.",
+        "La vie étudiante est riche avec plusieurs clubs : Développement, Cybersécurité, Data Science, Innovation, et le BDE. Ces clubs organisent des hackathons, des compétitions, des projets et des événements."
+      ]
+    },
+    {
+      "tag": "actualites",
+      "patterns": [
+        "actualités",
+        "événements",
+        "journées portes ouvertes",
+        "jpo",
+        "prochains événements"
+      ],
+      "responses": [
+        "Le département organise régulièrement des événements : Journées Portes Ouvertes (présentation des formations, visite du campus, démonstrations de projets, échanges avec les associations), conférences et séminaires techniques, hackathons, compétitions, et projets étudiants. Consultez la page Actualités pour connaître les prochains événements.",
+        "Les actualités incluent les Journées Portes Ouvertes, conférences, séminaires, hackathons et compétitions. Consultez la page Actualités & calendrier pour les dates et détails des prochains événements."
+      ]
+    },
+    {
+      "tag": "projets_etudiants",
+      "patterns": [
+        "projets étudiants",
+        "projets",
+        "quels projets",
+        "projets réalisés"
+      ],
+      "responses": [
+        "Les étudiants réalisent des projets concrets tout au long de leur cursus : applications web et mobiles, plateformes cloud, solutions de cybersécurité, projets data et IA, systèmes embarqués, prototypes IoT. Ces réalisations sont souvent présentées lors de jurys, de challenges internes ou de compétitions externes en partenariat avec des entreprises.",
+        "Les projets étudiants couvrent de nombreux domaines : développement web/mobile, cloud, cybersécurité, data science, IA, IoT. Ils sont présentés lors de jurys, challenges et compétitions."
+      ]
+    },
+    {
+      "tag": "contact",
+      "patterns": [
+        "contact",
+        "comment contacter",
+        "coordonnées",
+        "email",
+        "téléphone",
+        "adresse mail"
+      ],
+      "responses": [
+        "Pour toute question concernant le département d'informatique, vous pouvez utiliser le formulaire de contact sur la page Contact & à propos. Vous pouvez également contacter les enseignants lors de leurs permanences ou prendre rendez-vous. Pour les admissions, contactez le service des admissions de l'EFREI.",
+        "Vous pouvez nous contacter via le formulaire de contact sur le site, ou rencontrer les enseignants lors de leurs permanences. Pour les questions d'admission, contactez le service des admissions de l'EFREI."
+      ]
+    },
+    {
+      "tag": "faq_generale",
+      "patterns": [
+        "faq",
+        "questions fréquentes",
+        "questions courantes"
+      ],
+      "responses": [
+        "Les questions fréquentes concernent : les conditions d'admission, les débouchés après la formation, la possibilité de faire une alternance, les stages obligatoires, les spécialisations proposées, et comment contacter un enseignant. Consultez la section FAQ sur la page Contact & à propos pour plus de détails.",
+        "La FAQ couvre les admissions, débouchés, alternance, stages, spécialisations et contacts. Retrouvez toutes les réponses sur la page Contact & à propos dans la section FAQ."
+      ]
+    },
+    {
+      "tag": "statistiques_insertion",
+      "patterns": [
+        "statistiques insertion",
+        "taux insertion",
+        "salaire moyen",
+        "insertion professionnelle",
+        "emploi après diplôme"
+      ],
+      "responses": [
+        "Le département affiche un excellent taux d'insertion professionnelle : 100% de taux d'insertion à 6 mois après le cycle ingénieur. Pour connaître les statistiques détaillées (salaire moyen, durée de recherche d'emploi, pourcentage de CDI, etc.), consultez la page Statistiques & débouchés.",
+        "Le taux d'insertion professionnelle est de 100% à 6 mois après le cycle ingénieur. Pour les statistiques complètes (salaires, durée de recherche, types de contrats), consultez la page Statistiques & débouchés."
+      ]
+    },
+    {
+      "tag": "international",
+      "patterns": [
+        "international",
+        "échange",
+        "doubles diplômes",
+        "stages à l'étranger",
+        "mobilité internationale"
+      ],
+      "responses": [
+        "Le département propose une ouverture internationale avec possibilité de semestres d'échange, de doubles diplômes et de stages à l'étranger selon le cursus suivi. Cette dimension internationale fait partie intégrante de notre approche pédagogique.",
+        "L'ouverture internationale est possible via des semestres d'échange, des doubles diplômes et des stages à l'étranger. Ces opportunités sont disponibles selon le cursus suivi."
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": [
+        "merci",
+        "merci beaucoup",
+        "merci bien",
+        "je vous remercie"
+      ],
+      "responses": [
+        "De rien ! N'hésitez pas si vous avez d'autres questions. Je suis là pour vous aider !",
+        "Je vous en prie ! Si vous avez besoin d'informations supplémentaires, n'hésitez pas à me poser d'autres questions.",
+        "Avec plaisir ! N'hésitez pas à revenir si vous avez d'autres questions sur le département d'informatique."
+      ]
+    },
+    {
+      "tag": "unknown",
+      "patterns": [],
+      "responses": [
+        "Je ne suis pas sûr de comprendre votre question. Pouvez-vous la reformuler ? Je peux vous aider sur les formations, l'équipe enseignante, les admissions, les débouchés, la vie étudiante et bien plus encore.",
+        "Je n'ai pas bien saisi votre demande. Pourriez-vous être plus précis ? Je peux répondre à vos questions sur le département d'informatique de l'EFREI : formations, admissions, équipe, débouchés, etc.",
+        "Désolé, je n'ai pas compris. Essayez de reformuler votre question ou demandez-moi quelque chose sur les formations, les admissions, l'équipe enseignante ou les débouchés professionnels."
+      ]
+    }
+  ]
+}
+

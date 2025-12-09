@@ -40,108 +40,118 @@
   <!-- ========== MAIN CONTENT ========== -->
   <main>
     <!-- Section contact du département -->
-    <section id="contact-departement">
+    <section id="contact-departement" class="contact-info-section">
       <h2>Contactez-nous</h2>
-      <p>
+      <p class="intro-text">
         Pour toute question concernant le département d'informatique, nos formations,
-        les modalités d’admission ou la vie étudiante, vous pouvez nous écrire via le
-        formulaire ci-dessous ou utiliser les coordonnées de l’école.
+        les modalités d'admission ou la vie étudiante, vous pouvez nous contacter via
+        les coordonnées ci-dessous ou utiliser le formulaire en fin de page.
       </p>
     
-      <p>
-        <strong>Adresse du campus principal :</strong><br>
-        EFREI Paris – Campus de Villejuif<br>
-        30-32 avenue de la République<br>
-        94800 Villejuif – France
-      </p>
-    
-      <p>
-        <strong>Téléphone (admissions) :</strong> +33 (0)1 88 28 90 01<br>
-        <strong>Email (admissions) :</strong> admissions@efrei.fr
-      </p>
-    
-      <p>
-        Pour plus d’informations générales sur l’école, ses formations et les
-        événements à venir, vous pouvez également consulter le site officiel :
-        <em>efrei.fr</em>.
-      </p>
-    
-      <form>
-        <div>
-          <label for="nom">Nom :</label>
-          <input type="text" id="nom" name="nom" required>
+      <div class="contact-cards">
+        <div class="contact-card">
+          <div class="contact-icon">📍</div>
+          <h3>Adresse</h3>
+          <p>
+            <strong>EFREI Paris – Campus de Villejuif</strong><br>
+            30-32 avenue de la République<br>
+            94800 Villejuif – France
+          </p>
         </div>
       
-        <div>
-          <label for="email">Email :</label>
-          <input type="email" id="email" name="email" required>
+        <div class="contact-card">
+          <div class="contact-icon">📞</div>
+          <h3>Téléphone</h3>
+          <p>
+            <strong>Admissions :</strong><br>
+            <a href="tel:+33188289001">+33 (0)1 88 28 90 01</a>
+          </p>
         </div>
       
-        <div>
-          <label for="sujet">Sujet :</label>
-          <input type="text" id="sujet" name="sujet" required>
+        <div class="contact-card">
+          <div class="contact-icon">✉️</div>
+          <h3>Email</h3>
+          <p>
+            <strong>Admissions :</strong><br>
+            <a href="mailto:admissions@efrei.fr">admissions@efrei.fr</a>
+          </p>
         </div>
       
-        <div>
-          <label for="message">Message :</label>
-          <textarea id="message" name="message" rows="10" required></textarea>
+        <div class="contact-card">
+          <div class="contact-icon">🌐</div>
+          <h3>Site web</h3>
+          <p>
+            Pour plus d'informations générales sur l'école, ses formations et les
+            événements à venir, consultez le site officiel :<br>
+            <a href="https://efrei.fr" target="_blank" rel="noopener">efrei.fr</a>
+          </p>
         </div>
-      
-        <div>
-          <button type="submit">Envoyer</button>
-        </div>
-      </form>
+      </div>
     </section>
   
     <!-- Section admissions -->
-    <section id="admissions">
+    <section id="admissions" class="admissions-section">
       <h2>Admissions</h2>
-      <p>
-        Le département d'informatique de l’EFREI Paris recrute des étudiants motivés,
+      <p class="intro-text">
+        Le département d'informatique de l'EFREI Paris recrute des étudiants motivés,
         curieux et passionnés par les technologies numériques. Plusieurs voies
-        d’accès sont possibles en fonction de votre niveau d’études.
+        d'accès sont possibles en fonction de votre niveau d'études.
       </p>
     
-      <ul>
-        <li>
-          <strong>Admission post-bac :</strong>
-          via Parcoursup, principalement à travers le concours Puissance Alpha
-          (bachelors et prépa intégrée). Le dossier prend en compte les résultats
-          de première et terminale, les spécialités choisies, les appréciations
-          et, selon les formations, un oral de motivation.
-        </li>
+      <div class="admissions-grid">
+        <article class="admission-card">
+          <div class="admission-number">01</div>
+          <h3>Admission post-bac</h3>
+          <p>
+            Via Parcoursup, principalement à travers le concours Puissance Alpha
+            (bachelors et prépa intégrée). Le dossier prend en compte les résultats
+            de première et terminale, les spécialités choisies, les appréciations
+            et, selon les formations, un oral de motivation.
+          </p>
+        </article>
       
-        <li>
-          <strong>Admission en cycle ingénieur :</strong>
-          pour les étudiants ayant déjà validé un bac+2 ou bac+3 (BUT, BTS, L2, L3,
-          prépa, etc.), l’intégration se fait sur dossier et entretien. Les candidats
-          rejoignent alors la 1<sup>re</sup> ou la 2<sup>e</sup> année du cycle ingénieur
-          en fonction de leur parcours.
-        </li>
+        <article class="admission-card">
+          <div class="admission-number">02</div>
+          <h3>Admission en cycle ingénieur</h3>
+          <p>
+            Pour les étudiants ayant déjà validé un bac+2 ou bac+3 (BUT, BTS, L2, L3,
+            prépa, etc.), l'intégration se fait sur dossier et entretien. Les candidats
+            rejoignent alors la 1<sup>re</sup> ou la 2<sup>e</sup> année du cycle ingénieur
+            en fonction de leur parcours.
+          </p>
+        </article>
       
-        <li>
-          <strong>Admission en alternance :</strong>
-          plusieurs formations, notamment en cycle ingénieur, sont accessibles en
-          apprentissage. Les étudiants partagent leur temps entre l’école et
-          l’entreprise, ce qui leur permet d’acquérir une expérience professionnelle
-          solide et de faciliter leur insertion sur le marché du travail.
-        </li>
+        <article class="admission-card">
+          <div class="admission-number">03</div>
+          <h3>Admission en alternance</h3>
+          <p>
+            Plusieurs formations, notamment en cycle ingénieur, sont accessibles en
+            apprentissage. Les étudiants partagent leur temps entre l'école et
+            l'entreprise, ce qui leur permet d'acquérir une expérience professionnelle
+            solide et de faciliter leur insertion sur le marché du travail.
+          </p>
+        </article>
       
-        <li>
-          <strong>Admission internationale :</strong>
-          l’EFREI accueille des étudiants internationaux via des procédures
-          spécifiques (candidatures hors Parcoursup, programmes d’échanges,
-          doubles diplômes). Un niveau suffisant en français et/ou en anglais est
-          requis, selon la formation.
-        </li>
-      </ul>
+        <article class="admission-card">
+          <div class="admission-number">04</div>
+          <h3>Admission internationale</h3>
+          <p>
+            L'EFREI accueille des étudiants internationaux via des procédures
+            spécifiques (candidatures hors Parcoursup, programmes d'échanges,
+            doubles diplômes). Un niveau suffisant en français et/ou en anglais est
+            requis, selon la formation.
+          </p>
+        </article>
+      </div>
     
-      <p>
-        Pour connaître en détail les procédures d’admission, les calendriers et les
-        pièces à fournir, il est recommandé de consulter la rubrique Admissions du
-        site officiel de l’EFREI Paris ou de contacter directement le service des
-        admissions à l’adresse <em>admissions@efrei.fr</em>.
-      </p>
+      <div class="info-box">
+        <p>
+          <strong>💡 Pour aller plus loin :</strong> Pour connaître en détail les procédures d'admission, les calendriers et les
+          pièces à fournir, il est recommandé de consulter la rubrique Admissions du
+          site officiel de l'EFREI Paris ou de contacter directement le service des
+          admissions à l'adresse <em>admissions@efrei.fr</em>.
+        </p>
+      </div>
     </section>
   
     <!-- Section FAQ -->
@@ -231,112 +241,162 @@
         </ul>
         <p>
           Pour des questions plus générales, vous pouvez également écrire au
-          département via le formulaire de contact de cette page.
+          département via le <a href="#formulaire-contact">formulaire de contact</a> en fin de page.
         </p>
       </details>
     </section>
   
     <!-- Section équipe projet -->
-    <section id="equipe-projet">
+    <section id="equipe-projet" class="team-section">
       <h2>Équipe projet</h2>
-      <p>
-        Ce site web a été développé par une équipe d’étudiants du département
+      <p class="intro-text">
+        Ce site web a été développé par une équipe d'étudiants du département
         d'informatique de l'EFREI Paris dans le cadre du module de Programmation
         Web. Chaque membre a contribué à la conception, au développement et aux
         tests du site.
       </p>
     
-      <article>
-        <h3>Étudiant 1</h3>
-        <p><strong>Rôle :</strong> Développeur Frontend / Design</p>
-        <p>
-          Responsable de l’intégration des maquettes, de la mise en page en HTML5/CSS3,
-          du choix de la charte graphique et de la cohérence visuelle entre les
-          différentes pages. Participe également à l’adaptation responsive pour
-          mobile et tablette.
-        </p>
-      </article>
+      <div class="team-grid">
+        <article class="team-card">
+          <div class="team-avatar">👨‍💻</div>
+          <h3>Étudiant 1</h3>
+          <p class="team-role">Développeur Frontend / Design</p>
+          <p>
+            Responsable de l'intégration des maquettes, de la mise en page en HTML5/CSS3,
+            du choix de la charte graphique et de la cohérence visuelle entre les
+            différentes pages. Participe également à l'adaptation responsive pour
+            mobile et tablette.
+          </p>
+        </article>
     
-      <article>
-        <h3>Étudiant 2</h3>
-        <p><strong>Rôle :</strong> Développeur Backend / Logique JavaScript</p>
-        <p>
-          En charge de la partie dynamique du site : scripts JavaScript pour
-          l’interactivité (menus, formulaires, carrousel, validation côté client,
-          petites animations), organisation du code et structuration des fichiers.
-        </p>
-      </article>
+        <article class="team-card">
+          <div class="team-avatar">⚙️</div>
+          <h3>Étudiant 2</h3>
+          <p class="team-role">Développeur Backend / Logique JavaScript</p>
+          <p>
+            En charge de la partie dynamique du site : scripts JavaScript pour
+            l'interactivité (menus, formulaires, carrousel, validation côté client,
+            petites animations), organisation du code et structuration des fichiers.
+          </p>
+        </article>
     
-      <article>
-        <h3>Étudiant 3</h3>
-        <p><strong>Rôle :</strong> Chef de projet / Coordination</p>
-        <p>
-          Coordonne le travail de l’équipe, planifie les tâches, assure le suivi
-          du projet avec l’enseignant, veille au respect des consignes de l’énoncé
-          (structure du site, technologies autorisées, livrables, dépôt Git) et à
-          la cohérence globale du contenu.
-        </p>
-      </article>
+        <article class="team-card">
+          <div class="team-avatar">👔</div>
+          <h3>Étudiant 3</h3>
+          <p class="team-role">Chef de projet / Coordination</p>
+          <p>
+            Coordonne le travail de l'équipe, planifie les tâches, assure le suivi
+            du projet avec l'enseignant, veille au respect des consignes de l'énoncé
+            (structure du site, technologies autorisées, livrables, dépôt Git) et à
+            la cohérence globale du contenu.
+          </p>
+        </article>
     
-      <article>
-        <h3>Étudiant 4</h3>
-        <p><strong>Rôle :</strong> Développeur Full Stack / Intégration</p>
-        <p>
-          Fait le lien entre le frontend et la logique JavaScript, gère
-          l’intégration finale des différentes pages, participe aux tests,
-          débogage et amélioration des performances. Peut également proposer des
-          fonctionnalités supplémentaires (animations, petites améliorations UX).
-        </p>
-      </article>
+        <article class="team-card">
+          <div class="team-avatar">🚀</div>
+          <h3>Étudiant 4</h3>
+          <p class="team-role">Développeur Full Stack / Intégration</p>
+          <p>
+            Fait le lien entre le frontend et la logique JavaScript, gère
+            l'intégration finale des différentes pages, participe aux tests,
+            débogage et amélioration des performances. Peut également proposer des
+            fonctionnalités supplémentaires (animations, petites améliorations UX).
+          </p>
+        </article>
+      </div>
     
-      <p>
+      <p class="team-note">
         Les noms et rôles précis peuvent être adaptés pour refléter la répartition
         réelle du travail au sein de votre groupe de projet.
       </p>
     </section>
   
     <!-- Section à propos du site -->
-    <section id="apropos-site">
+    <section id="apropos-site" class="about-section">
       <h2>À propos du site</h2>
-      <p>
+      <p class="intro-text">
         Ce site vitrine a été créé pour présenter le département d'informatique de
         l'EFREI Paris, ses formations, son équipe pédagogique, ses activités et
-        ses débouchés. Il s’agit d’un projet réalisé dans le cadre d’un cours de
+        ses débouchés. Il s'agit d'un projet réalisé dans le cadre d'un cours de
         développement web (Programmation Web – HTML5/CSS3/JavaScript).
       </p>
     
-      <p><strong>Objectifs du site :</strong></p>
-      <ul>
-        <li>Informer les futurs étudiants sur les formations proposées et leurs débouchés.</li>
-        <li>Présenter l'équipe enseignante, les domaines d’expertise et la recherche.</li>
-        <li>Mettre en avant les statistiques d'insertion professionnelle.</li>
-        <li>Communiquer sur les actualités, événements et clubs du département.</li>
-        <li>Faciliter le contact avec l’école et la compréhension des admissions.</li>
-      </ul>
+      <div class="about-content">
+        <div class="about-box">
+          <h3>🎯 Objectifs du site</h3>
+          <ul>
+            <li>Informer les futurs étudiants sur les formations proposées et leurs débouchés.</li>
+            <li>Présenter l'équipe enseignante, les domaines d'expertise et la recherche.</li>
+            <li>Mettre en avant les statistiques d'insertion professionnelle.</li>
+            <li>Communiquer sur les actualités, événements et clubs du département.</li>
+            <li>Faciliter le contact avec l'école et la compréhension des admissions.</li>
+          </ul>
+        </div>
+      
+        <div class="about-box">
+          <h3>🛠️ Technologies utilisées</h3>
+          <ul>
+            <li>HTML5 pour la structure des pages.</li>
+            <li>CSS3 pour le style, la mise en page et le design responsive.</li>
+            <li>JavaScript pour l'interactivité (menus, formulaires, animations).</li>
+            <li>Sans frameworks ni bibliothèques externes, conformément aux consignes du projet.</li>
+          </ul>
+        </div>
+      </div>
     
-      <p><strong>Technologies utilisées :</strong></p>
-      <ul>
-        <li>HTML5 pour la structure des pages.</li>
-        <li>CSS3 pour le style, la mise en page et le design responsive.</li>
-        <li>JavaScript pour l’interactivité (menus, formulaires, animations).</li>
-        <li>Sans frameworks ni bibliothèques externes, conformément aux consignes du projet.</li>
-      </ul>
-    
-      <p><strong>Répartition du travail :</strong></p>
-      <p>
-        Le développement du site a été réparti entre les membres de l'équipe
-        projet : chaque étudiant est responsable de certaines pages ou
-        fonctionnalités (accueil, formations, équipe enseignante, statistiques,
-        actualités, contact, etc.). La coordination générale, la cohérence
-        graphique et la validation finale du site ont été assurées collectivement,
-        avec un rôle particulier pour le chef de projet.
+      <div class="about-text">
+        <p><strong>Répartition du travail :</strong></p>
+        <p>
+          Le développement du site a été réparti entre les membres de l'équipe
+          projet : chaque étudiant est responsable de certaines pages ou
+          fonctionnalités (accueil, formations, équipe enseignante, statistiques,
+          actualités, contact, etc.). La coordination générale, la cohérence
+          graphique et la validation finale du site ont été assurées collectivement,
+          avec un rôle particulier pour le chef de projet.
+        </p>
+        <p>
+          Le projet est versionné avec Git et hébergé sur un dépôt partagé (par
+          exemple GitHub), ce qui permet un suivi des contributions et une bonne
+          gestion des versions.
+        </p>
+      </div>
+    </section>
+
+    <!-- Section formulaire de contact -->
+    <section id="formulaire-contact" class="contact-form-section">
+      <h2>Formulaire de contact</h2>
+      <p class="intro-text">
+        Vous avez une question ? N'hésitez pas à nous contacter via le formulaire ci-dessous.
+        Nous vous répondrons dans les plus brefs délais.
       </p>
     
-      <p>
-        Le projet est versionné avec Git et hébergé sur un dépôt partagé (par
-        exemple GitHub), ce qui permet un suivi des contributions et une bonne
-        gestion des versions.
-      </p>
+      <form class="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nom">Nom complet <span class="required">*</span></label>
+            <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
+          </div>
+        
+          <div class="form-group">
+            <label for="email">Email <span class="required">*</span></label>
+            <input type="email" id="email" name="email" placeholder="votre.email@exemple.fr" required>
+          </div>
+        </div>
+      
+        <div class="form-group">
+          <label for="sujet">Sujet <span class="required">*</span></label>
+          <input type="text" id="sujet" name="sujet" placeholder="Objet de votre message" required>
+        </div>
+      
+        <div class="form-group">
+          <label for="message">Message <span class="required">*</span></label>
+          <textarea id="message" name="message" rows="8" placeholder="Votre message..." required></textarea>
+        </div>
+      
+        <div class="form-submit">
+          <button type="submit">Envoyer le message</button>
+        </div>
+      </form>
     </section>
   </main>
 
@@ -347,7 +407,7 @@
       <ul>
         <li><a href="contact-apropos.html#apropos-site">À propos du site</a></li>
         <li><a href="contact-apropos.html#equipe-projet">Équipe projet</a></li>
-        <li><a href="contact-apropos.html">Contact</a></li>
+        <li><a href="contact-apropos.html#formulaire-contact">Contact</a></li>
       </ul>
     </nav>
     <p>&copy; 2025 Département d'informatique – EFREI. Tous droits réservés.</p>

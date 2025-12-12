@@ -159,6 +159,87 @@ main {
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
+/* .main-nav a {
+  position: relative;
+}
+
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: 0.35rem;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 999px;
+
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition);
+}
+
+/* effet au survol 
+.main-nav a:hover::after,
+.main-nav a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* état actif (page courante) 
+.main-nav a.is-active::after {
+  transform: scaleX(1);
+} */
+
+/* Le repère pour l'indicator */
+.main-nav ul {
+  position: relative;
+}
+
+/* --- 1) Hover underline (par lien) --- */
+.main-nav a {
+  position: relative;
+}
+
+/* petite barre (hover seulement) */
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: 0.35rem;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 999px;
+
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 200ms ease;
+}
+
+.main-nav a:hover::after,
+.main-nav a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* --- 2) Active indicator (unique, glissant) --- */
+.main-nav .nav-indicator {
+  position: absolute;
+  left: 0;
+  bottom: 8px;
+  height: 2px;
+  width: 20px;
+
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 999px;
+
+  transform: translateX(0);
+  transition: transform 260ms ease, width 260ms ease, opacity 160ms ease;
+
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+
 /* ========== SECTION GÉNÉRIQUE ========== */
 section {
   margin-block: 2rem;

@@ -59,6 +59,8 @@
       } else {
         // S'assurer qu'on arrive exactement au nombre cible
         let finalNumber = formatNumber(target);
+        const hasPresDe = originalText.toLowerCase().includes('près de');
+        if (hasPresDe) finalNumber = 'Près de ' + finalNumber;
         if (hasApprox) finalNumber = '≈ ' + finalNumber;
         if (hasPlus) finalNumber = finalNumber + '+';
         if (hasPercent) finalNumber = finalNumber + ' %';

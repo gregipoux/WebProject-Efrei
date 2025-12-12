@@ -124,12 +124,15 @@ main {
   justify-content: center;
   cursor: pointer;
   padding: 0;
-  transition: background-color var(--transition);
+  transition: background-color var(--transition), transform var(--transition), box-shadow var(--transition);
+  box-shadow: var(--shadow-sm);
 }
 
 .nav-toggle:hover,
 .nav-toggle:focus-visible {
   background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
 }
 
 .nav-toggle span {
@@ -377,19 +380,21 @@ form button[type="button"] {
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color var(--transition), box-shadow var(--transition);
+  transition: background-color var(--transition), box-shadow var(--transition), transform var(--transition);
   box-shadow: var(--shadow-sm);
 }
 
 form button[type="submit"]:hover,
 form button[type="button"]:hover {
   background: var(--efrei-blue-dark);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
 }
 
 form button[type="submit"]:active,
 form button[type="button"]:active {
   box-shadow: var(--shadow-sm);
+  transform: translateY(0);
 }
 
 /* ========== DETAILS/SUMMARY (FAQ) ========== */
@@ -515,7 +520,8 @@ details p a:hover {
   border: 2px solid rgba(255, 255, 255, 0.3);
   color: #ffffff;
   background: rgba(255, 255, 255, 0.1);
-  transition: background-color var(--transition), border-color var(--transition);
+  transition: background-color var(--transition), border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+  box-shadow: var(--shadow-sm);
 }
 
 #hero-accueil a:nth-of-type(1) {
@@ -527,11 +533,15 @@ details p a:hover {
 #hero-accueil a:nth-of-type(1):hover {
   background: rgba(255, 255, 255, 0.95);
   color: var(--efrei-blue);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
 }
 
 #hero-accueil a:nth-of-type(2):hover {
   background: rgba(255, 255, 255, 0.2);
   border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
 }
 
 /* ========== CARROUSEL (PLACEHOLDER VISUEL) ========== */
@@ -684,7 +694,7 @@ details p a:hover {
   font-weight: 600;
   color: var(--text-main);
   background: var(--bg-lighter);
-  transition: all var(--transition);
+  transition: all var(--transition), transform var(--transition);
   box-shadow: var(--shadow-sm);
 }
 
@@ -693,7 +703,8 @@ details p a:hover {
   color: #ffffff;
   background: var(--efrei-blue);
   border-color: var(--efrei-blue);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
 }
 
 /* ========== FOOTER ========== */
@@ -786,22 +797,10 @@ footer p {
 .contact-card {
   background: var(--bg-lighter);
   border-radius: var(--radius-lg);
-  padding: 2rem;
+  padding: 1.5rem;
   border: 1px solid var(--border-soft);
   box-shadow: var(--shadow-sm);
-  transition: box-shadow var(--transition), border-color var(--transition);
   text-align: center;
-}
-
-.contact-card:hover {
-  box-shadow: var(--shadow);
-  border-color: var(--efrei-blue-light);
-}
-
-.contact-icon {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  display: block;
 }
 
 .contact-card h3 {
@@ -1136,14 +1135,19 @@ footer p {
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color var(--transition), box-shadow var(--transition);
+  transition: background-color var(--transition), box-shadow var(--transition), transform var(--transition);
   box-shadow: var(--shadow-sm);
   min-width: 200px;
 }
 
 .contact-form button[type="submit"]:hover {
   background: var(--efrei-blue-dark);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+}
+
+.contact-form button[type="submit"]:active {
+  transform: translateY(0);
 }
 
 /* ========== CHATBOT ========== */
@@ -1167,17 +1171,19 @@ footer p {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color var(--transition), box-shadow var(--transition);
+  transition: background-color var(--transition), box-shadow var(--transition), transform var(--transition);
 }
 
 .chatbot-button:hover,
 .chatbot-button:focus-visible {
   background: var(--efrei-blue-dark);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
 }
 
 .chatbot-button:active {
   box-shadow: var(--shadow);
+  transform: translateY(-2px);
 }
 
 .chatbot-button-open {
@@ -1247,13 +1253,16 @@ footer p {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color var(--transition);
+  transition: background-color var(--transition), transform var(--transition), box-shadow var(--transition);
   padding: 0;
+  box-shadow: var(--shadow-sm);
 }
 
 .chatbot-close:hover,
 .chatbot-close:focus-visible {
   background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
 }
 
 .chatbot-messages {
@@ -1361,7 +1370,7 @@ footer p {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color var(--transition), box-shadow var(--transition);
+  transition: background-color var(--transition), box-shadow var(--transition), transform var(--transition);
   flex-shrink: 0;
   box-shadow: var(--shadow-sm);
 }
@@ -1369,11 +1378,13 @@ footer p {
 .chatbot-send-button:hover,
 .chatbot-send-button:focus-visible {
   background: var(--efrei-blue-dark);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
 }
 
 .chatbot-send-button:active {
   box-shadow: var(--shadow-sm);
+  transform: translateY(0);
 }
 
 /* ========== RESPONSIVE ========== */

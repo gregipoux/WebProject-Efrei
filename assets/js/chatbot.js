@@ -1,4 +1,4 @@
-// Chatbot pour le département d'informatique EFREI
+// Notre petit chatbot pour le département d'info EFREI
 (function() {
   'use strict';
 
@@ -11,7 +11,7 @@
   let chatInput = null;
   let chatSendButton = null;
 
-  // Charger les intents depuis intent.json
+  // On charge les réponses depuis le fichier JSON
   async function loadIntents() {
     try {
       const response = await fetch('intent.json');
@@ -19,7 +19,7 @@
       intents = data.intents;
     } catch (error) {
       console.error('Erreur lors du chargement des intents:', error);
-      // Fallback avec quelques intents de base
+      // Si ça plante, on met quelques réponses de base pour pas que ça crash
       intents = [
         {
           tag: "greeting",
@@ -35,7 +35,7 @@
     }
   }
 
-  // Fonction de similarité simple (distance de Levenshtein simplifiée)
+  // On calcule à quel point deux phrases se ressemblent (algo de Levenshtein)
   function calculateSimilarity(str1, str2) {
     const longer = str1.length > str2.length ? str1 : str2;
     const shorter = str1.length > str2.length ? str2 : str1;
@@ -69,7 +69,7 @@
     return matrix[str2.length][str1.length];
   }
 
-  // Trouver la meilleure réponse
+  // On cherche la meilleure réponse à donner selon ce que l'utilisateur a dit
   function findBestResponse(userMessage) {
     if (!intents || intents.length === 0) {
       return "Désolé, les intents ne sont pas encore chargés. Veuillez réessayer dans quelques instants.";
@@ -78,14 +78,14 @@
     const normalizedMessage = userMessage.toLowerCase().trim();
     let bestMatch = null;
     let bestScore = 0;
-    const threshold = 0.3; // Seuil de similarité minimum
+    const threshold = 0.3; // Score minimum pour qu'on considère que c'est une bonne réponse
 
-    // Chercher dans tous les intents
+    // On parcourt tous les intents pour trouver le meilleur match
     for (const intent of intents) {
       for (const pattern of intent.patterns) {
         const similarity = calculateSimilarity(normalizedMessage, pattern.toLowerCase());
         
-        // Vérifier aussi si le message contient des mots-clés du pattern
+        // On vérifie aussi si des mots-clés du pattern sont dans le message (pour améliorer la détection)
         const patternWords = pattern.toLowerCase().split(/\s+/);
         const messageWords = normalizedMessage.split(/\s+/);
         let keywordMatch = 0;
@@ -105,7 +105,7 @@
       }
     }
 
-    // Si aucun match suffisant, utiliser l'intent "unknown"
+    // Si on a rien trouvé de convaincant, on utilise la réponse "je sais pas"
     if (bestScore < threshold) {
       bestMatch = intents.find(intent => intent.tag === "unknown") || intents[0];
     }
@@ -118,14 +118,14 @@
     return "Je ne suis pas sûr de comprendre votre question. Pouvez-vous la reformuler ?";
   }
 
-  // Créer l'interface du chatbot
+  // On crée toute l'interface du chatbot (bouton, fenêtre, etc.)
   function createChatbot() {
-    // Container principal
+    // Le container principal qui contient tout
     chatContainer = document.createElement('div');
     chatContainer.id = 'chatbot-container';
     chatContainer.className = 'chatbot-container';
 
-    // Bouton pour ouvrir/fermer le chat
+    // Le bouton flottant pour ouvrir/fermer le chat
     chatButton = document.createElement('button');
     chatButton.id = 'chatbot-button';
     chatButton.className = 'chatbot-button';
@@ -133,12 +133,12 @@
     chatButton.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>';
     chatButton.addEventListener('click', toggleChat);
 
-    // Fenêtre de chat
+    // La fenêtre de chat qui s'affiche quand on clique sur le bouton
     chatWindow = document.createElement('div');
     chatWindow.id = 'chatbot-window';
     chatWindow.className = 'chatbot-window';
 
-    // En-tête
+    // L'en-tête avec le titre et le bouton pour fermer
     const header = document.createElement('div');
     header.className = 'chatbot-header';
     header.innerHTML = `
@@ -150,12 +150,12 @@
     `;
     header.querySelector('.chatbot-close').addEventListener('click', toggleChat);
 
-    // Zone de messages
+    // La zone où s'affichent les messages
     chatMessages = document.createElement('div');
     chatMessages.id = 'chatbot-messages';
     chatMessages.className = 'chatbot-messages';
 
-    // Message de bienvenue
+    // Le message de bienvenue qu'on affiche au démarrage
     const welcomeMessage = document.createElement('div');
     welcomeMessage.className = 'chatbot-message chatbot-message-bot';
     welcomeMessage.innerHTML = `
@@ -165,7 +165,7 @@
     `;
     chatMessages.appendChild(welcomeMessage);
 
-    // Zone de saisie
+    // La zone où l'utilisateur tape son message
     const inputContainer = document.createElement('div');
     inputContainer.className = 'chatbot-input-container';
 
@@ -181,14 +181,14 @@
     chatSendButton.setAttribute('aria-label', 'Envoyer le message');
     chatSendButton.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>';
 
-    // Gestion de l'envoi
+    // Fonction qui gère l'envoi d'un message
     function sendMessage() {
       const message = chatInput.value.trim();
       if (message) {
         addUserMessage(message);
         chatInput.value = '';
         
-        // Simuler un délai de réflexion
+        // On attend un peu avant de répondre pour que ça fasse plus naturel
         setTimeout(() => {
           const response = findBestResponse(message);
           addBotMessage(response);
@@ -206,7 +206,7 @@
     inputContainer.appendChild(chatInput);
     inputContainer.appendChild(chatSendButton);
 
-    // Assemblage
+    // On assemble tous les éléments ensemble
     chatWindow.appendChild(header);
     chatWindow.appendChild(chatMessages);
     chatWindow.appendChild(inputContainer);
@@ -217,7 +217,7 @@
     document.body.appendChild(chatContainer);
   }
 
-  // Ajouter un message utilisateur
+  // On ajoute un message de l'utilisateur dans le chat
   function addUserMessage(message) {
     const messageDiv = document.createElement('div');
     messageDiv.className = 'chatbot-message chatbot-message-user';
@@ -230,7 +230,7 @@
     scrollToBottom();
   }
 
-  // Ajouter un message bot
+  // On ajoute un message du bot dans le chat
   function addBotMessage(message) {
     const messageDiv = document.createElement('div');
     messageDiv.className = 'chatbot-message chatbot-message-bot';
@@ -243,21 +243,21 @@
     scrollToBottom();
   }
 
-  // Faire défiler vers le bas
+  // On scroll automatiquement vers le bas pour voir le dernier message
   function scrollToBottom() {
     if (chatMessages) {
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }
   }
 
-  // Échapper le HTML
+  // On sécurise le texte pour éviter les injections HTML (sécurité de base)
   function escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
   }
 
-  // Ouvrir/fermer le chat
+  // On ouvre ou ferme la fenêtre de chat
   function toggleChat() {
     isOpen = !isOpen;
     if (chatWindow && chatButton) {
@@ -274,7 +274,7 @@
     }
   }
 
-  // Initialisation
+  // Fonction d'initialisation qui démarre tout le chatbot
   function init() {
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', () => {
@@ -291,4 +291,3 @@
 
   init();
 })();
-

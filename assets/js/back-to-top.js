@@ -13,26 +13,6 @@
         <polyline points="5 12 12 5 19 12"></polyline>
       </svg>
     `;
-    button.style.cssText = `
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      width: 48px;
-      height: 48px;
-      background: var(--efrei-blue, #0055a4);
-      color: white;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
-      z-index: 1000;
-      opacity: 0;
-      transform: translateY(20px);
-    `;
 
     // Ajouter le bouton au body
     document.body.appendChild(button);
@@ -71,17 +51,6 @@
 
     // Événements
     button.addEventListener('click', scrollToTop);
-    
-    // Effet hover
-    button.addEventListener('mouseenter', () => {
-      button.style.backgroundColor = 'var(--efrei-blue-dark, #00366f)';
-      button.style.transform = 'translateY(-3px)';
-    });
-    
-    button.addEventListener('mouseleave', () => {
-      button.style.backgroundColor = 'var(--efrei-blue, #0055a4)';
-      button.style.transform = 'translateY(0)';
-    });
 
     // Écouter le scroll (avec debounce pour optimiser les performances)
     let scrollTimer = null;

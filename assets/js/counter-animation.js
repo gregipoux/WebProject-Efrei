@@ -2,76 +2,50 @@
 (function() {
   'use strict';
 
-  // Fonction pour formater les nombres (ajouter des espaces pour les milliers)
-  function formatNumber(num) {
-    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-  }
-
-  // Fonction pour extraire le nombre d'un texte
-  function extractNumber(text) {
-    // Chercher les nombres dans le texte (supporte "≈ 4 600", "16 000+", "100 %", "Près de 90", etc.)
-    const match = text.match(/[\d\s]+/);
-    if (!match) return null;
-    
-    // Nettoyer le nombre (enlever les espaces)
-    const cleanNumber = match[0].replace(/\s/g, '');
-    const number = parseInt(cleanNumber, 10);
-    
-    // Si c'est "Près de", on retourne le nombre trouvé
-    if (text.toLowerCase().includes('près de')) {
-      return number;
-    }
-    
-    return number;
-  }
-
-  // Fonction pour animer un nombre
   function animateCounter(element, target, duration = 2000) {
     const start = 0;
-    const startTime = performance.now();
-    const originalText = element.textContent;
-    const hasPlus = originalText.includes('+');
-    const hasPercent = originalText.includes('%');
-    const hasApprox = originalText.includes('≈');
+    const increment = target / (duration / 16); // ~60fps
+    let current = start;
 
-    function updateCounter(currentTime) {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      
-      // Fonction d'easing (ease-out)
-      const easeOut = 1 - Math.pow(1 - progress, 3);
-      const current = Math.floor(start + (target - start) * easeOut);
-      
-      // Formater le nombre
-      let formattedNumber = formatNumber(current);
-      
-      // Ajouter les symboles si nécessaire
-      const hasPresDe = originalText.toLowerCase().includes('près de');
-      if (hasPresDe) formattedNumber = 'Près de ' + formattedNumber;
-      if (hasApprox) formattedNumber = '≈ ' + formattedNumber;
-      if (hasPlus) formattedNumber = formattedNumber + '+';
-      if (hasPercent) formattedNumber = formattedNumber + ' %';
-      
-      element.textContent = formattedNumber;
-
-      if (progress < 1) {
-        requestAnimationFrame(updateCounter);
-      } else {
-        // S'assurer qu'on arrive exactement au nombre cible
-        let finalNumber = formatNumber(target);
-        const hasPresDe = originalText.toLowerCase().includes('près de');
-        if (hasPresDe) finalNumber = 'Près de ' + finalNumber;
-        if (hasApprox) finalNumber = '≈ ' + finalNumber;
-        if (hasPlus) finalNumber = finalNumber + '+';
-        if (hasPercent) finalNumber = finalNumber + ' %';
-        element.textContent = finalNumber;
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        current = target;
+        clearInterval(timer);
       }
-    }
-
-    requestAnimationFrame(updateCounter);
+      
+      // Formater le nombre avec des espaces pour les milliers
+      const formatted = Math.floor(current).toLocaleString('fr-FR');
+      element.textContent = formatted;
+    }, 16);
   }
 
-  // Fonction pour initialiser les compteurs
+  function extractNumber(text) {
+    // Extraire les nombres du texte (gère les formats comme "≈ 4 600", "16 000+", "100 %", etc.)
+    const cleaned = text.replace(/[^\d]/g, '');
+    return parseInt(cleaned, 10) || 0;
+  }
+
+  function formatNumber(number, originalText) {
+    // Conserver le format original (≈, +, %, etc.)
+    const formatted = number.toLocaleString('fr-FR');
+    
+    if (originalText.includes('≈')) {
+      return `≈ ${formatted}`;
+    }
+    if (originalText.includes('+')) {
+      return `${formatted}+`;
+    }
+    if (originalText.includes('%')) {
+      return `${formatted} %`;
+    }
+    if (originalText.includes('Près de')) {
+      return `Près de ${formatted}`;
+    }
+    
+    return formatted;
+  }
+
   function initCounters() {
     const chiffresSection = document.getElementById('chiffres-cles');
     
@@ -80,59 +54,57 @@
     }
 
     const listItems = chiffresSection.querySelectorAll('li');
-    const counters = [];
-
-    listItems.forEach((li, index) => {
-      const strongElement = li.querySelector('strong');
-      if (!strongElement) return;
-
-      const originalText = strongElement.textContent;
-      const targetNumber = extractNumber(originalText);
-
-      if (targetNumber !== null && targetNumber > 0) {
-        // Stocker les informations du compteur
-        counters.push({
-          element: strongElement,
-          target: targetNumber,
-          originalText: originalText,
-          animated: false
-        });
-      }
-    });
+    
+    if (listItems.length === 0) {
+      return;
+    }
 
     // Observer pour déclencher l'animation quand la section entre dans le viewport
-    if (counters.length > 0 && 'IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            // Animer tous les compteurs avec un petit délai entre chacun
-            counters.forEach((counter, index) => {
-              if (!counter.animated) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Animer tous les chiffres
+          listItems.forEach((li, index) => {
+            const strongElement = li.querySelector('strong');
+            if (strongElement && !strongElement.dataset.animated) {
+              const originalText = strongElement.textContent;
+              const targetNumber = extractNumber(originalText);
+              
+              if (targetNumber > 0) {
+                // Marquer comme animé
+                strongElement.dataset.animated = 'true';
+                
+                // Démarrer l'animation avec un petit délai pour chaque élément
                 setTimeout(() => {
-                  animateCounter(counter.element, counter.target, 2000);
-                  counter.animated = true;
-                }, index * 200); // Délai de 200ms entre chaque compteur
+                  let current = 0;
+                  const duration = 2000;
+                  const increment = targetNumber / (duration / 16);
+                  
+                  const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= targetNumber) {
+                      current = targetNumber;
+                      clearInterval(timer);
+                    }
+                    
+                    const formatted = formatNumber(Math.floor(current), originalText);
+                    strongElement.textContent = formatted;
+                  }, 16);
+                }, index * 200); // Délai progressif pour chaque élément
               }
-            });
-            
-            // Arrêter d'observer une fois l'animation déclenchée
-            observer.unobserve(entry.target);
-          }
-        });
-      }, {
-        threshold: 0.3 // Déclencher quand 30% de la section est visible
+            }
+          });
+          
+          // Arrêter d'observer une fois l'animation déclenchée
+          observer.unobserve(entry.target);
+        }
       });
+    }, {
+      threshold: 0.3, // Déclencher quand 30% de la section est visible
+      rootMargin: '0px 0px -50px 0px' // Déclencher un peu avant
+    });
 
-      observer.observe(chiffresSection);
-    } else {
-      // Fallback si IntersectionObserver n'est pas supporté
-      // Animer immédiatement
-      counters.forEach((counter, index) => {
-        setTimeout(() => {
-          animateCounter(counter.element, counter.target, 2000);
-        }, index * 200);
-      });
-    }
+    observer.observe(chiffresSection);
   }
 
   // Initialiser quand le DOM est prêt

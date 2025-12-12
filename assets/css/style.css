@@ -1993,3 +1993,62 @@ footer p {
     height: 10px;
   }
 }
+
+/* ========== BOUTON RETOUR EN HAUT ========== */
+.back-to-top {
+  position: fixed;
+  bottom: 1.5rem;
+  right: calc(1.5rem + 60px + 1rem); /* À gauche du chatbot avec espacement */
+  width: 48px;
+  height: 48px;
+  background: var(--efrei-blue);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-lg);
+  transition: opacity var(--transition), transform var(--transition), background-color var(--transition);
+  z-index: 999;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.back-to-top.show {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.back-to-top:hover,
+.back-to-top:focus-visible {
+  background: var(--efrei-blue-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 85, 164, 0.3);
+  outline: none;
+}
+
+.back-to-top:active {
+  transform: translateY(-1px);
+}
+
+.back-to-top svg {
+  width: 24px;
+  height: 24px;
+}
+
+@media (max-width: 768px) {
+  .back-to-top {
+    width: 44px;
+    height: 44px;
+    bottom: 1rem;
+    right: calc(1rem + 56px + 1rem); /* À gauche du chatbot mobile avec espacement */
+  }
+
+  .back-to-top svg {
+    width: 20px;
+    height: 20px;
+  }
+}

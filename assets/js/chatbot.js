@@ -250,7 +250,7 @@
     }
   }
 
-  // On sécurise le texte pour éviter les injections HTML (sécurité de base)
+  // On sécurise le texte pour éviter les injections HTML (sécurité de base on est pas des experts, pas encore)
   function escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text;

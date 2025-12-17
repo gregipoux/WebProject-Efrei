@@ -6,7 +6,7 @@
   const config = {
     autoPlay: true,
     autoPlayInterval: 5000, // 5 secondes
-    transitionDuration: 1000, // millisecondes
+    transitionDuration: 800, // millisecondes (ajusté pour correspondre au CSS)
     pauseOnHover: true
   };
 

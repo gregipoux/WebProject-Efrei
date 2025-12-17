@@ -53,20 +53,56 @@
       return;
     }
 
-    const ulRect = ul.getBoundingClientRect();
-    const linkRect = targetLink.getBoundingClientRect();
+    // Utiliser requestAnimationFrame pour synchroniser avec le rendu
+    requestAnimationFrame(() => {
+      const ulRect = ul.getBoundingClientRect();
+      const linkRect = targetLink.getBoundingClientRect();
 
-    const padding = 10;
-    const left = (linkRect.left - ulRect.left) + padding;
-    const width = Math.max(8, linkRect.width - padding * 2);
+      // Récupérer la position actuelle de l'indicateur pour partir de là
+      const currentLeft = parseFloat(indicator.style.left) || 0;
+      const currentWidth = parseFloat(indicator.style.width) || 20;
+      const currentTop = parseFloat(indicator.style.top) || 0;
+      
+      // Si l'indicateur n'a pas encore de position, utiliser la position du lien actif
+      let startLeft = currentLeft;
+      let startWidth = currentWidth;
+      let startTop = currentTop;
+      
+      // Si l'indicateur est invisible ou n'a pas de position, trouver le lien actif
+      if (indicator.style.opacity === '0' || currentLeft === 0) {
+        const activeLink = ul.querySelector('a.is-active');
+        if (activeLink) {
+          const activeRect = activeLink.getBoundingClientRect();
+          const padding = 10;
+          startLeft = (activeRect.left - ulRect.left) + padding;
+          startWidth = Math.max(8, activeRect.width - padding * 2);
+          const gap = 6;
+          startTop = (activeRect.bottom - ulRect.top) - gap;
+        }
+      }
 
-    const gap = 6;
-    const top = (linkRect.bottom - ulRect.top) - gap;
+      const padding = 10;
+      const targetLeft = (linkRect.left - ulRect.left) + padding;
+      const targetWidth = Math.max(8, linkRect.width - padding * 2);
+      const gap = 6;
+      const targetTop = (linkRect.bottom - ulRect.top) - gap;
 
-    indicator.style.left = `${left}px`;
-    indicator.style.width = `${width}px`;
-    indicator.style.top = `${top}px`;
-    indicator.style.opacity = '1';
+      // Définir la position de départ pour l'animation
+      indicator.style.left = `${startLeft}px`;
+      indicator.style.width = `${startWidth}px`;
+      indicator.style.top = `${startTop}px`;
+      indicator.style.opacity = '1';
+
+      // Forcer un reflow pour s'assurer que la position de départ est appliquée
+      void indicator.offsetHeight;
+
+      // Animer vers la position cible
+      requestAnimationFrame(() => {
+        indicator.style.left = `${targetLeft}px`;
+        indicator.style.width = `${targetWidth}px`;
+        indicator.style.top = `${targetTop}px`;
+      });
+    });
   }
 
   function initNavIndicator() {
@@ -81,9 +117,54 @@
 
     const indicator = ensureIndicator(ul);
 
-    // Position initiale sur la page active
+    // Vérifier si on vient d'une navigation (position sauvegardée)
+    const savedPosition = sessionStorage.getItem('nav-indicator-position');
     const activeLink = getActiveLink(links);
-    moveIndicator(ul, indicator, activeLink);
+    
+    if (savedPosition && activeLink) {
+      try {
+        const pos = JSON.parse(savedPosition);
+        // Appliquer directement la position sauvegardée sans animation
+        indicator.style.left = `${pos.left}px`;
+        indicator.style.width = `${pos.width}px`;
+        indicator.style.top = `${pos.top}px`;
+        indicator.style.opacity = '1';
+        // Nettoyer la position sauvegardée
+        sessionStorage.removeItem('nav-indicator-position');
+        // Vérifier si la position correspond au lien actif, sinon ajuster sans animation
+        requestAnimationFrame(() => {
+          const ulRect = ul.getBoundingClientRect();
+          const linkRect = activeLink.getBoundingClientRect();
+          const padding = 10;
+          const expectedLeft = (linkRect.left - ulRect.left) + padding;
+          const expectedWidth = Math.max(8, linkRect.width - padding * 2);
+          const gap = 6;
+          const expectedTop = (linkRect.bottom - ulRect.top) - gap;
+          
+          // Si la position ne correspond pas exactement, ajuster sans transition
+          if (Math.abs(parseFloat(indicator.style.left) - expectedLeft) > 1) {
+            indicator.style.transition = 'none';
+            indicator.style.left = `${expectedLeft}px`;
+            indicator.style.width = `${expectedWidth}px`;
+            indicator.style.top = `${expectedTop}px`;
+            // Réactiver les transitions après un court délai
+            setTimeout(() => {
+              indicator.style.transition = '';
+            }, 50);
+          }
+        });
+      } catch (e) {
+        // En cas d'erreur, continuer avec la position normale
+        setTimeout(() => {
+          moveIndicator(ul, indicator, activeLink);
+        }, 0);
+      }
+    } else {
+      // Position initiale sur la page active (avec délai pour s'assurer que le DOM est rendu)
+      setTimeout(() => {
+        moveIndicator(ul, indicator, activeLink);
+      }, 0);
+    }
 
     links.forEach((a) => {
       a.addEventListener('click', (e) => {
@@ -100,15 +181,32 @@
         // navigation interne → on anime d'abord
         e.preventDefault();
     
-        // animation vers le nouveau lien
-        moveIndicator(ul, indicator, a);
+        // Marquer le lien comme actif visuellement
+        links.forEach(link => link.classList.remove('is-active'));
+        a.classList.add('is-active');
     
-        // délai = durée de la transition CSS
-        const TRANSITION_DURATION = 260;
-    
-        setTimeout(() => {
-          window.location.href = a.href;
-        }, TRANSITION_DURATION);
+        // animation vers le nouveau lien (double RAF pour s'assurer du rendu)
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            moveIndicator(ul, indicator, a);
+            
+            // Sauvegarder la position finale avant la navigation
+            const TRANSITION_DURATION = 300;
+            setTimeout(() => {
+              const finalLeft = parseFloat(indicator.style.left) || 0;
+              const finalWidth = parseFloat(indicator.style.width) || 20;
+              const finalTop = parseFloat(indicator.style.top) || 0;
+              
+              sessionStorage.setItem('nav-indicator-position', JSON.stringify({
+                left: finalLeft,
+                width: finalWidth,
+                top: finalTop
+              }));
+              
+              window.location.href = a.href;
+            }, TRANSITION_DURATION);
+          });
+        });
       });
   
       // accessibilité clavier
@@ -128,9 +226,15 @@
       moveIndicator(ul, indicator, ul.querySelector('a.is-active'));
     });
 
-    // Resize/zoom : recalcul position (important)
+    // Resize/zoom : recalcul position (important) avec debounce
+    let resizeTimer;
     window.addEventListener('resize', () => {
-      moveIndicator(ul, indicator, ul.querySelector('a.is-active'));
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        requestAnimationFrame(() => {
+          moveIndicator(ul, indicator, ul.querySelector('a.is-active'));
+        });
+      }, 150);
     });
   }
 

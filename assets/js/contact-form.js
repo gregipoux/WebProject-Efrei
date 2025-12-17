@@ -14,7 +14,11 @@
     popup.className = 'popup-container';
     popup.innerHTML = `
       <div class="popup-content">
-        <div class="popup-icon">✓</div>
+        <div class="popup-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="checkmark">
+            <path d="M20 6L9 17l-5-5" class="checkmark-path"></path>
+          </svg>
+        </div>
         <h3>Message envoyé avec succès !</h3>
         <p>Votre message a été envoyé. Nous vous répondrons dans les plus brefs délais.</p>
         <button class="popup-close-btn" id="popup-close-btn">Fermer</button>

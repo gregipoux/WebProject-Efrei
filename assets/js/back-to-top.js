@@ -19,10 +19,23 @@
 
     // Fonction pour scroller vers le haut
     function scrollToTop() {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
+      // Support pour le smooth scroll avec fallback
+      if ('scrollBehavior' in document.documentElement.style) {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      } else {
+        // Fallback pour les navigateurs plus anciens
+        const scrollStep = -window.scrollY / (500 / 15);
+        const scrollInterval = setInterval(function() {
+          if (window.scrollY !== 0) {
+            window.scrollBy(0, scrollStep);
+          } else {
+            clearInterval(scrollInterval);
+          }
+        }, 15);
+      }
     }
 
     // Fonction pour afficher/masquer le bouton selon le scroll
@@ -54,12 +67,28 @@
 
     // Écouter le scroll (avec debounce pour optimiser les performances)
     let scrollTimer = null;
+    const scrollOptions = { passive: true };
+    
+    // Vérifier si passive est supporté
+    let supportsPassive = false;
+    try {
+      const opts = Object.defineProperty({}, 'passive', {
+        get: function() {
+          supportsPassive = true;
+        }
+      });
+      window.addEventListener('test', null, opts);
+      window.removeEventListener('test', null, opts);
+    } catch (e) {
+      // Passive non supporté
+    }
+    
     window.addEventListener('scroll', () => {
       if (scrollTimer !== null) {
         clearTimeout(scrollTimer);
       }
       scrollTimer = setTimeout(handleScroll, 10);
-    }, { passive: true });
+    }, supportsPassive ? scrollOptions : false);
 
     // Vérifier la position initiale
     handleScroll();

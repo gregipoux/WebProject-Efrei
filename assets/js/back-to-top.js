@@ -1,9 +1,8 @@
-// Bouton "Retour en haut" (Back to Top)
 (function() {
   'use strict';
 
   function createBackToTopButton() {
-    // Créer le bouton
+    // On crée le bouton
     const button = document.createElement('button');
     button.className = 'back-to-top';
     button.setAttribute('aria-label', 'Retour en haut de la page');
@@ -14,19 +13,19 @@
       </svg>
     `;
 
-    // Ajouter le bouton au body
+    // On ajoute le bouton à la page
     document.body.appendChild(button);
 
     // Fonction pour scroller vers le haut
     function scrollToTop() {
-      // Support pour le smooth scroll avec fallback
+      // On utilise le smooth scroll si disponible
       if ('scrollBehavior' in document.documentElement.style) {
         window.scrollTo({
           top: 0,
           behavior: 'smooth'
         });
       } else {
-        // Fallback pour les navigateurs plus anciens
+        // Sinon on fait un scroll manuel pour les vieux navigateurs
         const scrollStep = -window.scrollY / (500 / 15);
         const scrollInterval = setInterval(function() {
           if (window.scrollY !== 0) {
@@ -38,14 +37,14 @@
       }
     }
 
-    // Fonction pour afficher/masquer le bouton selon le scroll
+    // Fonction pour montrer/cacher le bouton selon le scroll
     function handleScroll() {
       const scrollY = window.scrollY || window.pageYOffset;
-      const threshold = 300; // Afficher après 300px de scroll
+      const threshold = 300; // On affiche après 300px de scroll
 
       if (scrollY > threshold) {
         button.style.display = 'flex';
-        // Animation d'apparition
+        // On anime l'apparition
         setTimeout(() => {
           button.style.opacity = '1';
           button.style.transform = 'translateY(0)';
@@ -53,7 +52,7 @@
       } else {
         button.style.opacity = '0';
         button.style.transform = 'translateY(20px)';
-        // Masquer après l'animation
+        // On cache après l'animation
         setTimeout(() => {
           if (window.scrollY <= threshold) {
             button.style.display = 'none';
@@ -62,14 +61,14 @@
       }
     }
 
-    // Événements
+    // On écoute les événements
     button.addEventListener('click', scrollToTop);
 
-    // Écouter le scroll (avec debounce pour optimiser les performances)
+    // On écoute le scroll
     let scrollTimer = null;
     const scrollOptions = { passive: true };
     
-    // Vérifier si passive est supporté
+    // On vérifie si passive est supporté
     let supportsPassive = false;
     try {
       const opts = Object.defineProperty({}, 'passive', {
@@ -80,7 +79,7 @@
       window.addEventListener('test', null, opts);
       window.removeEventListener('test', null, opts);
     } catch (e) {
-      // Passive non supporté
+      // Passive pas supporté, pas grave
     }
     
     window.addEventListener('scroll', () => {
@@ -90,11 +89,11 @@
       scrollTimer = setTimeout(handleScroll, 10);
     }, supportsPassive ? scrollOptions : false);
 
-    // Vérifier la position initiale
+    // On vérifie la position au démarrage
     handleScroll();
   }
 
-  // Initialiser quand le DOM est prêt
+  // On démarre quand la page est prête
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', createBackToTopButton);
   } else {

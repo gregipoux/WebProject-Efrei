@@ -18,22 +18,22 @@
       const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
       
       if (isExpanded) {
-        // Fermer le menu
+        // On ferme le menu
         mainNav.classList.remove('open');
         navToggle.setAttribute('aria-expanded', 'false');
         navToggle.setAttribute('aria-label', 'Ouvrir le menu de navigation');
-        // Permettre le scroll du body
+        // On permet le scroll du body
         document.body.style.overflow = '';
         document.body.style.position = '';
         document.body.style.width = '';
         window.scrollTo(0, scrollPosition);
       } else {
-        // Ouvrir le menu
+        // On ouvre le menu
         scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
         mainNav.classList.add('open');
         navToggle.setAttribute('aria-expanded', 'true');
         navToggle.setAttribute('aria-label', 'Fermer le menu de navigation');
-        // Empêcher le scroll du body quand le menu est ouvert sur mobile
+        // On empêche le scroll du body quand le menu est ouvert sur mobile
         if (window.innerWidth <= 768) {
           document.body.style.overflow = 'hidden';
           document.body.style.position = 'fixed';
@@ -46,7 +46,7 @@
     // Écouter le clic sur le bouton toggle
     navToggle.addEventListener('click', toggleMenu);
 
-    // Fermer le menu quand on clique sur un lien (navigation)
+    // On ferme le menu quand on clique sur un lien
     navLinks.forEach(link => {
       link.addEventListener('click', () => {
         // On attend un peu avant de fermer pour que la navigation fonctionne
@@ -63,14 +63,14 @@
       });
     });
 
-    // Fermer le menu avec la touche Escape
+    // On ferme le menu avec la touche Escape
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && mainNav.classList.contains('open')) {
         toggleMenu();
       }
     });
 
-    // Fermer le menu si on clique en dehors (optionnel)
+    // On ferme le menu si on clique en dehors
     document.addEventListener('click', (e) => {
       const isClickInsideNav = mainNav.contains(e.target);
       const isClickOnToggle = navToggle.contains(e.target);
@@ -80,7 +80,7 @@
       }
     });
 
-    // Gérer le redimensionnement de la fenêtre
+    // On gère le redimensionnement de la fenêtre
     // Si on passe en mode desktop, on ferme le menu
     let resizeTimer;
     window.addEventListener('resize', () => {
@@ -96,7 +96,7 @@
           document.body.style.width = '';
           window.scrollTo(0, scrollPosition);
         } else if (window.innerWidth <= 768 && mainNav.classList.contains('open')) {
-          // Réappliquer le lock du scroll si on revient en mobile avec le menu ouvert
+          // On réapplique le lock du scroll si on revient en mobile avec le menu ouvert
           scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
           document.body.style.overflow = 'hidden';
           document.body.style.position = 'fixed';
@@ -107,7 +107,7 @@
     });
   }
 
-  // Initialiser quand le DOM est prêt
+  // On démarre quand la page est prête
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initNavigation);
   } else {

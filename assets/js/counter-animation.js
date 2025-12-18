@@ -4,7 +4,7 @@
 
   function animateCounter(element, target, duration = 2000) {
     const start = 0;
-    const increment = target / (duration / 16); // ~60fps
+    const increment = target / (duration / 16); // Environ 60fps
     let current = start;
 
     const timer = setInterval(() => {
@@ -21,13 +21,13 @@
   }
 
   function extractNumber(text) {
-    // Extraire les nombres du texte (gère les formats comme "≈ 4 600", "16 000+", "100 %", etc.)
+    // On extrait les nombres du texte
     const cleaned = text.replace(/[^\d]/g, '');
     return parseInt(cleaned, 10) || 0;
   }
 
   function formatNumber(number, originalText) {
-    // Conserver le format original (≈, +, %, etc.)
+    // On conserve le format original (≈, +, %, etc.)
     const formatted = number.toLocaleString('fr-FR');
     
     if (originalText.includes('≈')) {
@@ -59,7 +59,7 @@
       return;
     }
 
-    // Observer pour déclencher l'animation quand la section entre dans le viewport
+    // On observe pour déclencher l'animation quand la section entre dans le viewport
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -71,10 +71,10 @@
               const targetNumber = extractNumber(originalText);
               
               if (targetNumber > 0) {
-                // Marquer comme animé
+                // On marque comme animé
                 strongElement.dataset.animated = 'true';
                 
-                // Démarrer l'animation avec un petit délai pour chaque élément
+                // On démarre l'animation avec un petit délai pour chaque élément
                 setTimeout(() => {
                   let current = 0;
                   const duration = 2000;
@@ -95,19 +95,19 @@
             }
           });
           
-          // Arrêter d'observer une fois l'animation déclenchée
+          // On arrête d'observer une fois l'animation déclenchée
           observer.unobserve(entry.target);
         }
       });
     }, {
-      threshold: 0.3, // Déclencher quand 30% de la section est visible
-      rootMargin: '0px 0px -50px 0px' // Déclencher un peu avant
+      threshold: 0.3, // On déclenche quand 30% de la section est visible
+      rootMargin: '0px 0px -50px 0px' // On déclenche un peu avant
     });
 
     observer.observe(chiffresSection);
   }
 
-  // Initialiser quand le DOM est prêt
+  // On démarre quand la page est prête
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initCounters);
   } else {

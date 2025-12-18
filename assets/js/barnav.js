@@ -1,4 +1,4 @@
-// Active navbar indicator (smooth moving underline) - click only, hover handled by CSS
+// Indicateur de navigation actif
 (function () {
   'use strict';
 
@@ -53,22 +53,21 @@
       return;
     }
 
-    // Utiliser requestAnimationFrame pour synchroniser avec le rendu
     requestAnimationFrame(() => {
       const ulRect = ul.getBoundingClientRect();
       const linkRect = targetLink.getBoundingClientRect();
 
-      // Récupérer la position actuelle de l'indicateur pour partir de là
+      // On récupère la position actuelle de l'indicateur
       const currentLeft = parseFloat(indicator.style.left) || 0;
       const currentWidth = parseFloat(indicator.style.width) || 20;
       const currentTop = parseFloat(indicator.style.top) || 0;
       
-      // Si l'indicateur n'a pas encore de position, utiliser la position du lien actif
+      // Si l'indicateur n'a pas de position, on utilise celle du lien actif
       let startLeft = currentLeft;
       let startWidth = currentWidth;
       let startTop = currentTop;
       
-      // Si l'indicateur est invisible ou n'a pas de position, trouver le lien actif
+      // Si l'indicateur est invisible, on trouve le lien actif
       if (indicator.style.opacity === '0' || currentLeft === 0) {
         const activeLink = ul.querySelector('a.is-active');
         if (activeLink) {
@@ -87,16 +86,16 @@
       const gap = 6;
       const targetTop = (linkRect.bottom - ulRect.top) - gap;
 
-      // Définir la position de départ pour l'animation
+      // On définit la position de départ pour l'animation
       indicator.style.left = `${startLeft}px`;
       indicator.style.width = `${startWidth}px`;
       indicator.style.top = `${startTop}px`;
       indicator.style.opacity = '1';
 
-      // Forcer un reflow pour s'assurer que la position de départ est appliquée
+      // On force un reflow pour être sûr que ça marche
       void indicator.offsetHeight;
 
-      // Animer vers la position cible
+      // On anime vers la position cible
       requestAnimationFrame(() => {
         indicator.style.left = `${targetLeft}px`;
         indicator.style.width = `${targetWidth}px`;
@@ -117,21 +116,21 @@
 
     const indicator = ensureIndicator(ul);
 
-    // Vérifier si on vient d'une navigation (position sauvegardée)
+    // On vérifie si on vient d'une navigation
     const savedPosition = sessionStorage.getItem('nav-indicator-position');
     const activeLink = getActiveLink(links);
     
     if (savedPosition && activeLink) {
       try {
         const pos = JSON.parse(savedPosition);
-        // Appliquer directement la position sauvegardée sans animation
+        // On applique directement la position sauvegardée
         indicator.style.left = `${pos.left}px`;
         indicator.style.width = `${pos.width}px`;
         indicator.style.top = `${pos.top}px`;
         indicator.style.opacity = '1';
-        // Nettoyer la position sauvegardée
+        // On nettoie la position sauvegardée
         sessionStorage.removeItem('nav-indicator-position');
-        // Vérifier si la position correspond au lien actif, sinon ajuster sans animation
+        // On vérifie si la position correspond au lien actif
         requestAnimationFrame(() => {
           const ulRect = ul.getBoundingClientRect();
           const linkRect = activeLink.getBoundingClientRect();
@@ -141,26 +140,26 @@
           const gap = 6;
           const expectedTop = (linkRect.bottom - ulRect.top) - gap;
           
-          // Si la position ne correspond pas exactement, ajuster sans transition
+          // Si ça correspond pas, on ajuste sans transition
           if (Math.abs(parseFloat(indicator.style.left) - expectedLeft) > 1) {
             indicator.style.transition = 'none';
             indicator.style.left = `${expectedLeft}px`;
             indicator.style.width = `${expectedWidth}px`;
             indicator.style.top = `${expectedTop}px`;
-            // Réactiver les transitions après un court délai
+            // On réactive les transitions après un petit délai
             setTimeout(() => {
               indicator.style.transition = '';
             }, 50);
           }
         });
       } catch (e) {
-        // En cas d'erreur, continuer avec la position normale
+        // En cas d'erreur, on continue normalement
         setTimeout(() => {
           moveIndicator(ul, indicator, activeLink);
         }, 0);
       }
     } else {
-      // Position initiale sur la page active (avec délai pour s'assurer que le DOM est rendu)
+      // Position initiale sur la page active
       setTimeout(() => {
         moveIndicator(ul, indicator, activeLink);
       }, 0);
@@ -168,7 +167,7 @@
 
     links.forEach((a) => {
       a.addEventListener('click', (e) => {
-        // liens externes ou ancres → on ne bloque pas
+        // Liens externes ou ancres, on ne bloque pas
         if (
           a.target === '_blank' ||
           a.href.startsWith('mailto:') ||
@@ -178,14 +177,14 @@
           return;
         }
     
-        // navigation interne → on anime d'abord
+        // Navigation interne, on anime d'abord
         e.preventDefault();
     
         // Marquer le lien comme actif visuellement
         links.forEach(link => link.classList.remove('is-active'));
         a.classList.add('is-active');
     
-        // animation vers le nouveau lien (double RAF pour s'assurer du rendu)
+        // On anime vers le nouveau lien
         requestAnimationFrame(() => {
           requestAnimationFrame(() => {
             moveIndicator(ul, indicator, a);
@@ -209,7 +208,7 @@
         });
       });
   
-      // accessibilité clavier
+      // Accessibilité clavier
       a.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
@@ -226,7 +225,7 @@
       moveIndicator(ul, indicator, ul.querySelector('a.is-active'));
     });
 
-    // Resize/zoom : recalcul position (important) avec debounce
+    // On recalcule la position au resize avec debounce
     let resizeTimer;
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimer);

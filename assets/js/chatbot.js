@@ -35,7 +35,7 @@
     }
   }
 
-  // On calcule à quel point deux phrases se ressemblent (algo de Levenshtein)
+  // On calcule à quel point deux phrases se ressemblent
   function calculateSimilarity(str1, str2) {
     const longer = str1.length > str2.length ? str1 : str2;
     const shorter = str1.length > str2.length ? str2 : str1;
@@ -69,7 +69,7 @@
     return matrix[str2.length][str1.length];
   }
 
-  // On cherche la meilleure réponse à donner selon ce que l'utilisateur a dit
+  // On cherche la meilleure réponse à donner
   function findBestResponse(userMessage) {
     if (!intents || intents.length === 0) {
       return "Désolé, les intents ne sont pas encore chargés. Veuillez réessayer dans quelques instants.";
@@ -85,7 +85,7 @@
       for (const pattern of intent.patterns) {
         const similarity = calculateSimilarity(normalizedMessage, pattern.toLowerCase());
         
-        // On vérifie aussi si des mots-clés du pattern sont dans le message (pour améliorer la détection)
+        // On vérifie aussi si des mots-clés du pattern sont dans le message
         const patternWords = pattern.toLowerCase().split(/\s+/);
         const messageWords = normalizedMessage.split(/\s+/);
         let keywordMatch = 0;
@@ -118,9 +118,9 @@
     return "Je ne suis pas sûr de comprendre votre question. Pouvez-vous la reformuler ?";
   }
 
-  // On crée toute l'interface du chatbot (bouton, fenêtre, etc.)
+  // On crée toute l'interface du chatbot
   function createChatbot() {
-    // Le container principal qui contient tout
+    // Le container principal
     chatContainer = document.createElement('div');
     chatContainer.id = 'chatbot-container';
     chatContainer.className = 'chatbot-container';
@@ -133,7 +133,7 @@
     chatButton.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>';
     chatButton.addEventListener('click', toggleChat);
 
-    // La fenêtre de chat qui s'affiche quand on clique sur le bouton
+    // La fenêtre de chat
     chatWindow = document.createElement('div');
     chatWindow.id = 'chatbot-window';
     chatWindow.className = 'chatbot-window';
@@ -250,7 +250,7 @@
     }
   }
 
-  // On sécurise le texte pour éviter les injections HTML (sécurité de base on est pas des experts, pas encore)
+  // On sécurise le texte pour éviter les injections HTML
   function escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text;

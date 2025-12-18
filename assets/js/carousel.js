@@ -6,7 +6,7 @@
   const config = {
     autoPlay: true,
     autoPlayInterval: 5000, // 5 secondes
-    transitionDuration: 800, // millisecondes (ajusté pour correspondre au CSS)
+    transitionDuration: 800, // millisecondes
     pauseOnHover: true
   };
 
@@ -17,13 +17,12 @@
       return; // La section n'existe pas sur cette page
     }
 
-    // Exemple de structure HTML à créer (vous pouvez adapter selon vos besoins)
-    // Remplacez le contenu existant par cette structure :
+    // Structure HTML du carrousel
     const carouselHTML = `
       <div class="carousel-container">
         <div class="carousel-wrapper">
           <div class="carousel-track">
-            <!-- Les images seront ajoutées ici dynamiquement -->
+            <!-- Les images seront ajoutées ici -->
           </div>
         </div>
         <button class="carousel-btn carousel-btn-prev" aria-label="Image précédente">
@@ -42,7 +41,7 @@
       </div>
     `;
 
-    // Images du carrousel
+    // Liste des images du carrousel
     const images = [
       {
         src: 'assets/img/img1.png',
@@ -70,7 +69,7 @@
       }
     ];
 
-    // Remplacer le contenu de la section
+    // On remplace le contenu de la section
     carouselSection.innerHTML = carouselHTML;
 
     const carouselTrack = carouselSection.querySelector('.carousel-track');
@@ -81,9 +80,9 @@
     let currentIndex = 0;
     let autoPlayTimer = null;
 
-    // Créer les slides et les indicateurs
+    // On crée les slides et les indicateurs
     images.forEach((image, index) => {
-      // Créer le slide
+      // On crée le slide
       const slide = document.createElement('div');
       slide.className = 'carousel-slide';
       if (index === 0) slide.classList.add('active');
@@ -96,7 +95,7 @@
       slide.appendChild(img);
       carouselTrack.appendChild(slide);
 
-      // Créer l'indicateur
+      // On crée l'indicateur
       const indicator = document.createElement('button');
       indicator.className = 'carousel-indicator';
       if (index === 0) indicator.classList.add('active');
@@ -113,11 +112,11 @@
       const slides = carouselTrack.querySelectorAll('.carousel-slide');
       const indicatorsList = indicators.querySelectorAll('.carousel-indicator');
 
-      // Retirer la classe active de tous les slides et indicateurs
+      // On retire la classe active de tous les slides et indicateurs
       slides.forEach(slide => slide.classList.remove('active'));
       indicatorsList.forEach(ind => ind.classList.remove('active'));
 
-      // Ajouter la classe active au slide et indicateur actuel
+      // On ajoute la classe active au slide et indicateur actuel
       slides[index].classList.add('active');
       indicatorsList[index].classList.add('active');
 
@@ -156,11 +155,11 @@
       startAutoPlay();
     }
 
-    // Événements des boutons
+    // On écoute les événements des boutons
     nextBtn.addEventListener('click', nextSlide);
     prevBtn.addEventListener('click', prevSlide);
 
-    // Pause au survol si configuré
+    // On met en pause au survol si configuré
     if (config.pauseOnHover) {
       const carouselContainer = carouselSection.querySelector('.carousel-container');
       carouselContainer.addEventListener('mouseenter', stopAutoPlay);
@@ -173,11 +172,11 @@
       if (e.key === 'ArrowRight') nextSlide();
     });
 
-    // Démarrer l'auto-play
+    // On démarre l'auto-play
     startAutoPlay();
   }
 
-  // Initialiser quand le DOM est prêt
+  // On démarre quand la page est prête
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', createCarousel);
   } else {

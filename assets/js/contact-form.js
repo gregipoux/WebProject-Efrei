@@ -4,12 +4,12 @@
 
   // Fonction pour créer et afficher la popup de confirmation
   function showSuccessPopup() {
-    // Créer l'overlay (fond sombre)
+    // On crée l'overlay (fond sombre)
     const overlay = document.createElement('div');
     overlay.className = 'popup-overlay';
     overlay.id = 'popup-overlay';
 
-    // Créer la popup
+    // On crée la popup
     const popup = document.createElement('div');
     popup.className = 'popup-container';
     popup.innerHTML = `
@@ -28,25 +28,25 @@
     overlay.appendChild(popup);
     document.body.appendChild(overlay);
 
-    // Animation d'apparition
+    // On anime l'apparition
     setTimeout(() => {
       overlay.classList.add('popup-show');
     }, 10);
 
-    // Fermer la popup quand on clique sur le bouton
+    // On ferme la popup quand on clique sur le bouton
     const closeBtn = document.getElementById('popup-close-btn');
     closeBtn.addEventListener('click', () => {
       closePopup(overlay);
     });
 
-    // Fermer la popup quand on clique sur l'overlay
+    // On ferme la popup quand on clique sur l'overlay
     overlay.addEventListener('click', (e) => {
       if (e.target === overlay) {
         closePopup(overlay);
       }
     });
 
-    // Fermer avec la touche Escape
+    // On ferme avec la touche Escape
     const handleEscape = (e) => {
       if (e.key === 'Escape') {
         closePopup(overlay);
@@ -71,7 +71,7 @@
     return new Promise((resolve) => {
       // Simuler un délai d'envoi (comme une requête API)
       setTimeout(() => {
-        // Ici, on pourrait normalement envoyer les données à un serveur
+        // Ici on pourrait normalement envoyer les données à un serveur
         // Pour la simulation, on simule juste un succès
         console.log('Données du formulaire:', {
           nom: formData.get('nom'),
@@ -93,25 +93,25 @@
     }
 
     contactForm.addEventListener('submit', async (e) => {
-      e.preventDefault(); // Empêcher l'envoi par défaut
+      e.preventDefault(); // On empêche l'envoi par défaut
 
-      // Récupérer les données du formulaire
+      // On récupère les données du formulaire
       const formData = new FormData(contactForm);
 
-      // Désactiver le bouton de soumission pendant l'envoi
+      // On désactive le bouton pendant l'envoi
       const submitButton = contactForm.querySelector('button[type="submit"]');
       const originalButtonText = submitButton.textContent;
       submitButton.disabled = true;
       submitButton.textContent = 'Envoi en cours...';
 
       try {
-        // Simuler l'envoi des données
+        // On simule l'envoi des données
         await simulateSendForm(formData);
 
-        // Réinitialiser le formulaire
+        // On réinitialise le formulaire
         contactForm.reset();
 
-        // Afficher la popup de succès
+        // On affiche la popup de succès
         showSuccessPopup();
       } catch (error) {
         console.error('Erreur lors de l\'envoi:', error);
@@ -124,7 +124,7 @@
     });
   }
 
-  // Initialiser quand le DOM est prêt
+  // On démarre quand la page est prête
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {

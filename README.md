@@ -2,7 +2,7 @@
 
 ## Description du projet
 
-Ce projet consiste en la création d'un site vitrine web pour le département d'informatique de l'EFREI Paris. Le site a été développé dans le cadre du module de **Programmation Web** (HTML5, CSS3, JavaScript) et respecte strictement les contraintes du cahier des charges.
+Ce projet consiste en la création d'un site vitrine web pour le département d'informatique de l'EFREI Paris. Le site a été développé dans le cadre du module de Programmation Web (HTML5, CSS3, JavaScript) et respecte strictement les contraintes du cahier des charges.
 
 ## Objectifs
 

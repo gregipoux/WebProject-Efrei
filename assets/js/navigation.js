@@ -66,7 +66,7 @@
     // On ferme le menu quand on clique sur un lien
     navLinks.forEach(link => {
       link.addEventListener('click', (e) => {
-        // On vérifie si c'est un lien interne (pas une ancre)
+        // On vérifie si c'est un lien interne
         const href = link.getAttribute('href');
         const isInternalLink = href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('tel:');
         

@@ -167,7 +167,6 @@
 
     links.forEach((a) => {
       a.addEventListener('click', (e) => {
-        // Liens externes ou ancres, on ne bloque pas
         if (
           a.target === '_blank' ||
           a.href.startsWith('mailto:') ||

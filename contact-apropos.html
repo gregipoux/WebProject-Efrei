@@ -321,6 +321,141 @@
           </ul>
         </div>
       </div>
+
+      <!-- Section respect du cahier des charges -->
+      <div class="about-box" style="margin-top: 2rem;">
+        <h3>Respect du cahier des charges</h3>
+        <ul>
+          <li><strong>Validation W3C :</strong> Toutes les pages HTML ont été validées avec succès par le validateur W3C. Aucune erreur ni avertissement détecté.</li>
+          <li><strong>HTML5, CSS3, JavaScript :</strong> Utilisation exclusive des technologies demandées, sans PHP ni frameworks.</li>
+          <li><strong>Design responsive :</strong> Mise en œuvre de media queries et du viewport pour une adaptation optimale sur mobile, tablette et desktop.</li>
+          <li><strong>Structure du site :</strong> Arborescence respectant la limite de 2 niveaux (niveau 0 : accueil, niveau 1 : pages principales).</li>
+          <li><strong>Navigation :</strong> En-tête avec titre et barre de navigation sur toutes les pages, footer avec lien vers "à propos" sur toutes les pages.</li>
+          <li><strong>Logo EFREI :</strong> Logo présent sur toutes les pages via l'en-tête.</li>
+          <li><strong>Gestion Git :</strong> Projet versionné avec Git et hébergé sur GitHub (dépôt partagé).</li>
+          <li><strong>Formulaires et tableaux :</strong> Implémentation de formulaires interactifs avec validation JavaScript et utilisation de tableaux pour la présentation de données.</li>
+        </ul>
+      </div>
+
+      <!-- Section fonctionnalités JavaScript -->
+      <div class="about-box" style="margin-top: 2rem;">
+        <h3>Fonctionnalités JavaScript implémentées</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1rem;">
+          <div>
+            <h4 style="margin-top: 0; color: #2c3e50;">Navigation interactive</h4>
+            <ul>
+              <li><strong>Menu mobile responsive :</strong> Menu hamburger avec animation d'ouverture/fermeture, gestion du scroll du body, fermeture au clic sur un lien ou avec la touche Escape.</li>
+              <li><strong>Indicateur de navigation animé :</strong> Barre de navigation avec indicateur visuel animé qui se déplace sous le lien actif, avec transition fluide lors du changement de page.</li>
+              <li><strong>Gestion des états actifs :</strong> Détection automatique de la page courante et mise en évidence du lien correspondant dans la navigation.</li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 style="margin-top: 0; color: #2c3e50;">Carrousel d'images</h4>
+            <ul>
+              <li><strong>Défilement automatique :</strong> Carrousel avec changement automatique d'images toutes les 5 secondes.</li>
+              <li><strong>Navigation manuelle :</strong> Boutons précédent/suivant et indicateurs cliquables pour naviguer entre les images.</li>
+              <li><strong>Pause au survol :</strong> Mise en pause automatique du défilement quand l'utilisateur survole le carrousel.</li>
+              <li><strong>Navigation clavier :</strong> Support des flèches gauche/droite pour naviguer dans le carrousel.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 style="margin-top: 0; color: #2c3e50;">Chatbot interactif</h4>
+            <ul>
+              <li><strong>Assistant virtuel :</strong> Chatbot flottant accessible depuis toutes les pages pour répondre aux questions fréquentes.</li>
+              <li><strong>Détection d'intentions :</strong> Algorithme de similarité (Levenshtein) pour comprendre les questions des utilisateurs.</li>
+              <li><strong>Base de connaissances :</strong> Réponses chargées depuis un fichier JSON (intent.json) avec différents patterns de questions.</li>
+              <li><strong>Interface utilisateur :</strong> Fenêtre de chat avec animation d'ouverture/fermeture, historique des messages, scroll automatique.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 style="margin-top: 0; color: #2c3e50;">Formulaire de contact</h4>
+            <ul>
+              <li><strong>Validation côté client :</strong> Vérification des champs obligatoires avant soumission.</li>
+              <li><strong>Popup de confirmation :</strong> Affichage d'une popup animée avec icône de succès après l'envoi du formulaire.</li>
+              <li><strong>Gestion des états :</strong> Désactivation du bouton pendant l'envoi avec changement de texte ("Envoi en cours...").</li>
+              <li><strong>Fermeture intuitive :</strong> Possibilité de fermer la popup via le bouton, clic sur l'overlay ou touche Escape.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 style="margin-top: 0; color: #2c3e50;">Animations de compteurs</h4>
+            <ul>
+              <li><strong>Compteurs animés :</strong> Animation progressive des chiffres clés (statistiques) lors du scroll de la page.</li>
+              <li><strong>Intersection Observer :</strong> Utilisation de l'API Intersection Observer pour déclencher l'animation quand la section entre dans le viewport.</li>
+              <li><strong>Formatage intelligent :</strong> Préservation des formats originaux (≈, +, %, etc.) pendant l'animation.</li>
+              <li><strong>Délai progressif :</strong> Animation séquentielle des différents compteurs avec délai progressif pour un effet visuel agréable.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 style="margin-top: 0; color: #2c3e50;">Bouton retour en haut</h4>
+            <ul>
+              <li><strong>Affichage conditionnel :</strong> Bouton qui apparaît après un scroll de 300px avec animation d'apparition/disparition.</li>
+              <li><strong>Scroll fluide :</strong> Retour en haut de page avec animation smooth scroll (avec fallback pour les navigateurs plus anciens).</li>
+              <li><strong>Optimisation des performances :</strong> Debounce sur l'événement scroll pour limiter les calculs.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section liste complète des fonctionnalités -->
+      <div class="about-box" style="margin-top: 2rem;">
+        <h3>Liste complète des fonctionnalités du site</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem;">
+          <div>
+            <h4 style="margin-top: 0; color: #2c3e50;">Pages du site</h4>
+            <ul>
+              <li>Page d'accueil avec carrousel</li>
+              <li>Présentation générale</li>
+              <li>Formations</li>
+              <li>Équipe enseignante</li>
+              <li>Statistiques & débouchés</li>
+              <li>Actualités & calendrier</li>
+              <li>Contact & à propos</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 style="margin-top: 0; color: #2c3e50;">Fonctionnalités interactives</h4>
+            <ul>
+              <li>Menu de navigation responsive</li>
+              <li>Indicateur de page active animé</li>
+              <li>Carrousel d'images automatique</li>
+              <li>Chatbot avec IA conversationnelle</li>
+              <li>Formulaire de contact validé</li>
+              <li>Animations de compteurs</li>
+              <li>Bouton retour en haut</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 style="margin-top: 0; color: #2c3e50;">Accessibilité & UX</h4>
+            <ul>
+              <li>Navigation au clavier</li>
+              <li>Attributs ARIA pour l'accessibilité</li>
+              <li>Design responsive (mobile, tablette, desktop)</li>
+              <li>Animations CSS fluides</li>
+              <li>Gestion des erreurs utilisateur</li>
+              <li>Feedback visuel sur les actions</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 style="margin-top: 0; color: #2c3e50;">Qualité du code</h4>
+            <ul>
+              <li>Code JavaScript modulaire</li>
+              <li>Utilisation de IIFE pour éviter les conflits</li>
+              <li>Gestion d'erreurs robuste</li>
+              <li>Code commenté et lisible</li>
+              <li>Validation W3C complète</li>
+              <li>Optimisation des performances</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     
       <div class="about-text">
         <p><strong>Répartition du travail :</strong></p>
@@ -333,9 +468,9 @@
           avec un rôle particulier pour le chef de projet.
         </p>
         <p>
-          Le projet est versionné avec Git et hébergé sur un dépôt partagé (par
-          exemple GitHub), ce qui permet un suivi des contributions et une bonne
-          gestion des versions.
+          Le projet est versionné avec Git et hébergé sur un dépôt partagé GitHub,
+          ce qui permet un suivi des contributions et une bonne gestion des versions.
+          <strong>Lien du dépôt :</strong> <a href="https://github.com/gregipoux/WebProject-Efrei.git" target="_blank" rel="noopener">https://github.com/gregipoux/WebProject-Efrei.git</a>
         </p>
       </div>
     </section>

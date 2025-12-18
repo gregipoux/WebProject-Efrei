@@ -10,6 +10,23 @@
     if (!navToggle || !mainNav) {
       return; // Les éléments n'existent pas sur cette page
     }
+    
+    requestAnimationFrame(() => {
+      mainNav.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.setAttribute('aria-label', 'Ouvrir le menu de navigation');
+      
+      // Nettoyer tous les styles inline du body
+      document.body.style.removeProperty('overflow');
+      document.body.style.removeProperty('position');
+      document.body.style.removeProperty('top');
+      document.body.style.removeProperty('width');
+      
+      // S'assurer que le scroll est restauré
+      if (window.innerWidth > 768) {
+        window.scrollTo(0, 0);
+      }
+    });
 
     let scrollPosition = 0;
 
@@ -48,9 +65,13 @@
 
     // On ferme le menu quand on clique sur un lien
     navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        // On attend un peu avant de fermer pour que la navigation fonctionne
-        setTimeout(() => {
+      link.addEventListener('click', (e) => {
+        // On vérifie si c'est un lien interne (pas une ancre)
+        const href = link.getAttribute('href');
+        const isInternalLink = href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('tel:');
+        
+        if (isInternalLink) {
+          // On ferme immédiatement le menu et on restaure le body
           mainNav.classList.remove('open');
           navToggle.setAttribute('aria-expanded', 'false');
           navToggle.setAttribute('aria-label', 'Ouvrir le menu de navigation');
@@ -58,8 +79,13 @@
           document.body.style.position = '';
           document.body.style.top = '';
           document.body.style.width = '';
-          window.scrollTo(0, scrollPosition);
-        }, 100);
+          
+          // Si on est en mobile, on restaure aussi le scroll
+          if (window.innerWidth <= 768) {
+            document.body.style.top = '';
+            window.scrollTo(0, 0);
+          }
+        }
       });
     });
 
@@ -107,10 +133,41 @@
     });
   }
 
-  // On démarre quand la page est prête
+  // Fonction pour nettoyer complètement l'état
+  function cleanupState() {
+    const mainNav = document.querySelector('.main-nav');
+    const navToggle = document.querySelector('.nav-toggle');
+    
+    if (mainNav && navToggle) {
+      mainNav.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.setAttribute('aria-label', 'Ouvrir le menu de navigation');
+    }
+    
+    // Toujours nettoyer les styles du body
+    document.body.style.removeProperty('overflow');
+    document.body.style.removeProperty('position');
+    document.body.style.removeProperty('top');
+    document.body.style.removeProperty('width');
+  }
+
+  // Nettoyer immédiatement au chargement de la page (avant même DOMContentLoaded)
+  cleanupState();
+  
+  // Nettoyer aussi avant le changement de page
+  window.addEventListener('beforeunload', cleanupState);
+  
+  // Nettoyer au chargement complet de la page
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initNavigation);
+    document.addEventListener('DOMContentLoaded', () => {
+      cleanupState();
+      initNavigation();
+    });
   } else {
+    cleanupState();
     initNavigation();
   }
+  
+  // Nettoyer aussi après le chargement complet (au cas où)
+  window.addEventListener('load', cleanupState);
 })();
